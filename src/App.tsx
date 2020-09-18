@@ -1,7 +1,12 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './App.scss';
 import { RealEstate } from './components';
+=======
+import logo from './logo.svg';
+import './App.css';
+>>>>>>> parent of c1b17fe... first commit
 =======
 import logo from './logo.svg';
 import './App.css';
@@ -27,6 +32,9 @@ function App() {
           Learn React
         </a>
       </header>
+<<<<<<< HEAD
+>>>>>>> parent of c1b17fe... first commit
+=======
 >>>>>>> parent of c1b17fe... first commit
     </div>
   );

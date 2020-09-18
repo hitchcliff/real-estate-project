@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This is a real-estate project based on Realtors API
 =======
+=======
+>>>>>>> parent of c1b17fe... first commit
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -45,4 +48,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+<<<<<<< HEAD
+>>>>>>> parent of c1b17fe... first commit
+=======
 >>>>>>> parent of c1b17fe... first commit
