@@ -1,1 +1,1 @@
-This is a Boiler plate for React, Redux, Thunk and Typescript.
+This is a real-estate project based on Realtors API

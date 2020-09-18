@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Dispatch } from 'redux';
-import { TestDispatchTypes, TEST_FAIL, TEST_LOADING, TEST_SUCCESS } from './types/test.action.types';
+import { TestDispatchTypes, TEST_FAIL, TEST_LOADING, TEST_SUCCESS } from '../types/test.action.types';
 
 export const TestActions = () => async (dispatch: Dispatch<TestDispatchTypes>) => {
     try {

@@ -1,0 +1,66 @@
+@import '../../styles/global';
+.accordion {
+    margin-top: 15px;
+    padding: 0 20px;
+
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        h4 {
+            margin-bottom: 0;
+            padding: 15px 20px;
+        }
+        span {
+            font-size: 1.2rem;
+            padding: 15px 20px;
+            border-top-right-radius: 10px;
+        }
+    }
+    
+    .content {
+        padding: 30px;
+        background-color: $filter_color;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+    }
+    .building, .lot {
+       margin-bottom: -10px; 
+        div {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            span {
+                padding: 10px;
+                background: $sub;
+                color: white;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            input {
+                background: white;
+                border: none;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                padding-left: 10px;
+                color: $most_used;
+                font-family: "Nunito", sans-serif;
+    
+                &::placeholder {
+                    opacity: .3;
+                }
+            }
+
+        }
+    }
+    .content:nth-child(2) {
+        display: flex;
+        flex-direction: row;
+    }
+
+}

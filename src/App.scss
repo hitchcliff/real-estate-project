@@ -1,0 +1,22 @@
+@import './styles/font'; // imported font
+@import './styles/global'; // global variables
+@import './styles/button'; // button styles
+@import './styles/accordion'; // accordion active
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-weight: $regular;
+    outline: none;  
+}
+
+input:focus, button:focus { outline: none;}
+
+h2 {
+    font-weight: $regular;
+}

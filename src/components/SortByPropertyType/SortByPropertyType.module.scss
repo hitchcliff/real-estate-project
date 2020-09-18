@@ -1,0 +1,35 @@
+@import '../../styles/global';
+.property_type {
+
+    padding: 20px;
+        ul {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-right: -10px;
+
+            li {
+                font-weight: $regular;
+                text-transform: capitalize;
+                background: $filter_color;
+                list-style-type: none;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                padding: 5px 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                span {
+                    opacity: .3;
+                    color: $most_used;
+                }
+                &.active {
+                    background: $sub;
+                    color: white;
+                    span {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }

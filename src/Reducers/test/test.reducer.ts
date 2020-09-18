@@ -1,4 +1,4 @@
-import { TestDispatchTypes, TEST_LOADING, testTodos, TEST_SUCCESS, TEST_FAIL } from "../../Actions/types/test.action.types"
+import { TestDispatchTypes, TEST_LOADING, testTodos, TEST_SUCCESS, TEST_FAIL } from "../../types/test.action.types"
 
 // interface or types is fine
 interface InitialState {

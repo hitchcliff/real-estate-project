@@ -1,0 +1,33 @@
+@import '../../styles/global';
+.baths {
+    padding: 20px;
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border-radius: 50px;
+            background: $filter_color;
+            list-style-type: none; 
+            color: $most_used;
+            cursor: pointer;
+            span {
+                opacity: .3;
+            }
+            &.active {
+                background: $sub;
+                color: white;
+                span {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
