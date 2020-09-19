@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ToggleSelectionNumbers from '../ToggleSelectionNumbers/ToggleSelectionNumbers';
 import styles from './SortByBaths.module.scss';
 const SortByBaths = () => {
+    const [value, setValue] = useState<string | null>("0")
+    const handleToggleSelection = (e: string) => {
+        setValue(e) // set the value we get from our callback
+    }
     return (
         <div className={styles.baths}>
             <h4>Sort by baths</h4>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5+</li>
-            </ul>
+            <ToggleSelectionNumbers min={1} max={5} callback={handleToggleSelection}/>
         </div>
     )
 }
