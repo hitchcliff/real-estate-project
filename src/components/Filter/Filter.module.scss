@@ -3,6 +3,8 @@
 .container {
     display: flex;
     flex-direction: column;
+    box-shadow: $box_shadow_1;
+    z-index: 1;
     h4 { // local h4
         font-weight: $regular;
         margin-bottom: 15px;

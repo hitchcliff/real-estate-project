@@ -1,12 +1,18 @@
 import React, { ReactElement } from 'react';
 import './App.scss';
-import { RealEstate } from './components';
+import { Homepage, RealEstate } from './components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-
-function App(): ReactElement<React.FC> {
+const App = (): ReactElement => {
+  
   return (
     <div className="App">
-       <RealEstate/> 
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Homepage}/>
+          <Route path="/homes" component={RealEstate} />
+        </Switch>
+      </Router>
     </div>
   );
 }

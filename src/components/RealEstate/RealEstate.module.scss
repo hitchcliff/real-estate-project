@@ -1,14 +1,13 @@
+@import '../../styles/global';
 .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: .3fr 1fr;
 
     & > div:nth-child(1) {
         background: white;
-        width: 20%;
+        min-width: 300px;
     }
     & > div:nth-child(2) {
-        background: gray;
-        width: 80%;
+        background: $ghost_white;
     }
 }
