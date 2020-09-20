@@ -1,8 +1,8 @@
-import { fetchListDispatchTypes, FETCH_LIST_FAILED, FETCH_LIST_LOADING, FETCH_LIST_SUCCESS, Meta } from "../types/ListForRent.types";
+import { fetchListDispatchTypes, FETCH_LIST_FAILED, FETCH_LIST_LOADING, FETCH_LIST_SUCCESS, Result } from "../types/ListForRent.types";
 
 interface ListForRentInitialState {
     loading: boolean,
-    data?: Meta,
+    data?: Result,
 }
 
 const initialState = {

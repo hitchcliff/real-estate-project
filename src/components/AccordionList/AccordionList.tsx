@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
-import { getAccordionActiveItem, setClassActive } from '../../util';
+import { getAccordionActiveItem, setClassActive } from '../../helpers/util';
 import { ListingsContent } from '../Filter/Content/Filter.content';
 import RadioToggle from '../RadioToggle/RadioToggle';
 import styles from './AccordionList.module.scss';

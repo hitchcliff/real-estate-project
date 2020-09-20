@@ -7,15 +7,26 @@ interface FetchListLoading {
 }
 interface FetchListSuccess {
     type: typeof FETCH_LIST_SUCCESS;
-    payload: Meta 
+    payload: Result
 }
 interface FetchListFailed {
     type: typeof FETCH_LIST_FAILED;
 }
 
-export interface Meta {
+// list for rent before formatted data
+export interface Result {
+    meta: Meta,
+    properties: Properties[]
+}
+
+// list for rent formatted data
+export interface FormattedData {
     tracking_params: TrackingParams,
-    properties: Properties[] 
+    properties: Properties[]
+}
+
+export type Meta = {
+    tracking_params: TrackingParams
 }
 
 export type TrackingParams = {

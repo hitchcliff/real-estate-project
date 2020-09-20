@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ListForRentReducer } from './ListForRent.reduxer';
+import { ListForRentReducer } from './ListForRent.reducer';
 import testReducer from './test/test.reducer';
 
 const RootReducer = combineReducers({
