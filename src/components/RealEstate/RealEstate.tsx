@@ -11,7 +11,7 @@ const RealEstate = () => {
     useEffect(() => {
         dispatch(ListForRentAction()); // call the action to fetch
     }, [])
-    
+   console.log(data) 
     return (
         <div className={styles.container}>
            <Filter/>
