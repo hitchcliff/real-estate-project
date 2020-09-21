@@ -24,7 +24,7 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     useEffect(() => {
         dispatch(ListForRentAction()); // call the action to fetch
     }, [])
-
+    console.log(data)
     const new_data = formatData(data); // format data
     if(!new_data) return <></>; // simply return if we dont have any data 
     

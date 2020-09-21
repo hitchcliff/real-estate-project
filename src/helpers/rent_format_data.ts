@@ -28,6 +28,7 @@ export const rent_propertiesDataFormat = (data: Properties[] | undefined): Prope
         }
     }
 
+    // format data for client display flags
     const ClientDisplayFlags = (item: ClientDisplayFlags) => {
         return {
             is_new_listing: item.is_new_listing,
@@ -36,6 +37,8 @@ export const rent_propertiesDataFormat = (data: Properties[] | undefined): Prope
 
     data.forEach(item => { // loop all data properties
        properties.push({
+           property_id: item.property_id, // id
+           photos: item.photos, // photos
            community: Community(item.community),
            address: Address(item.address),
            client_display_flags: ClientDisplayFlags(item.client_display_flags),

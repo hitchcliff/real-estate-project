@@ -5,16 +5,38 @@
     flex-direction: column;
     box-shadow: $box_shadow_1;
     z-index: 1;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     h4 { // local h4
         font-weight: $regular;
         margin-bottom: 15px;
     }
     .header { // header
-        background: $ghost_white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
         padding: 20px;
+        background: $ghost_white;
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    .filters {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &:hover {
+            &::-webkit-scrollbar {
+                background: white;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $sub;
+            }
+        }
+
     }
 }

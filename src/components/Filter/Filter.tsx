@@ -16,19 +16,23 @@ const Filter: React.FC<IFilterProp> = (props): ReactElement=> {
 
     return (
         <div className={styles.container}>
-           <div className={styles.header}>
-                <h2>Filters</h2>
+            <div className={styles.header}>
                 <div>
-                    <button className="recent-search">
-                        Recent search
-                    </button>
+                    <h2>Filters</h2>
+                    <div>
+                        <button className="recent-search">
+                            Recent search
+                        </button>
+                    </div>
                 </div>
            </div> 
-           <SortByPrice/> 
-           <SortByPropertyType/>
-           <SortByBeds/>
-           <SortByBaths/>
-           <AccordionList/>
+           <div className={styles.filters}>
+                <SortByPrice/> 
+                <SortByPropertyType/>
+                <SortByBeds/>
+                <SortByBaths/>
+                <AccordionList/>
+           </div>
         </div>
     )
 }

@@ -46,9 +46,11 @@ export const formatData = (data: Result | undefined): FormattedData | undefined 
 
     properties.forEach(property => {
         new_properties.push({
+           property_id: property.property_id,
            community: property.community,
            address: property.address,
            client_display_flags: property.client_display_flags,
+           photos: property.photos,
         })
     })
 

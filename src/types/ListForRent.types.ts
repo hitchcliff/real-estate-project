@@ -42,6 +42,8 @@ export type TrackingParams = {
 }
 
 export type Properties = {
+    photos: Object[],
+    property_id: string,
     community: Community,
     address: Address,
     client_display_flags: ClientDisplayFlags

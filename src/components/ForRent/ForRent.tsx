@@ -14,14 +14,13 @@ interface IForRentProp {
 const ForRent: React.FC<IForRentProp> = (props) => {
     const { items, tracker } = props;
     const new_items = rent_propertiesDataFormat(items) // format data
-    console.log(new_items, tracker)
     
     return (
         <div className={styles.container}>
             {/* Display Header */}
             <HomesDisplayHeader tracker={tracker}/>
             {/* Grid Display */}
-            <HomesGridDisplay/>
+            <HomesGridDisplay items={new_items}/>
             {/* List Display */}
         </div>
     )
