@@ -4,20 +4,22 @@
     ul {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap ;
         align-items: center;
-        justify-content: space-between;
-
+        margin-right: -10px;
+        margin-bottom: -10px;
         li {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 15px;
-            border-radius: 50px;
+            padding: 8px 12px;
+            border-radius: 5px;
             background: $filter_color;
             list-style-type: none; 
             color: $most_used;
             cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
             span {
                 opacity: .3;
             }

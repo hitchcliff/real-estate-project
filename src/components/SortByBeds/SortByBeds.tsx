@@ -9,7 +9,7 @@ const SortByBeds = () => {
     return (
         <div className={styles.beds}>
             <h4>Sort by beds</h4>
-            <ToggleSelection min={1} max={5} callback={handleToggleSelection}/> 
+            <ToggleSelection min={1} max={10} callback={handleToggleSelection}/> 
         </div>
     )
 }
