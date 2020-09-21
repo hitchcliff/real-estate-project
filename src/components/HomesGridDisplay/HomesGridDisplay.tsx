@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './HomesGridDisplay.module.scss'
 import { Properties } from '../../types/ListForRent.types'
 
@@ -9,38 +9,39 @@ import saved from '@fortawesome/free-solid-svg-icons/faHeart';
 // regular
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel'
+import Pagination from '../Pagination/Pagination'
+import { setClassActive } from '../../helpers/util'
 
 interface IHomesGridDisplayProp {
     items?: Properties[]
 }
 const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
     const { items } = props
-    const _items = items?.slice(0, 12);
-    console.log(_items)
-    const itemsMapper = items?.map(item => (
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(12);
+
+    const lastIndex = currentPage * itemsPerPage; // get the last index
+    const firstIndex = lastIndex - itemsPerPage; // get the first index
+    if(!items) return null;
+    const _items = items.slice(firstIndex, lastIndex); // slice the items
+    const totalPagesNumber = Math.ceil(items.length / itemsPerPage);
+    
+    const handleClickPageNumber = (num: number) => {
+        setCurrentPage(num);
+    }
+
+    const itemsMapper = _items?.map(item => (
         <div key={item.property_id} className={styles.home}>
             {/* overlay */}
             <div className={styles.home_overlay}>
                   <div className={styles.home_icons}>
                       <ul>
-                          <li>
-                            <FontAwesomeIcon icon={faArrowsAltH}/>
-                            {item.community.sqft_min} sqft. 
-                          </li>
-                          <li>
-                              <FontAwesomeIcon icon={faBed}/>
-                              {item.community.beds_max} Bed(s)
-                          </li>
+                          <li> <FontAwesomeIcon icon={faArrowsAltH}/> {item.community.sqft_min} sqft. </li>
+                          <li> <FontAwesomeIcon icon={faBed}/> {item.community.beds_max} Bed(s) </li>
                       </ul>
                       <ul>
-                          <li>
-                              <FontAwesomeIcon icon={faBuilding}/>
-                              {item.community.sqft_max} sqft.
-                         </li>
-                          <li>
-                              <FontAwesomeIcon icon={faBath}/>
-                              {item.community.baths_max} Bath(s)
-                          </li>
+                          <li> <FontAwesomeIcon icon={faBuilding}/> {item.community.sqft_max} sqft. </li>
+                          <li> <FontAwesomeIcon icon={faBath}/> {item.community.baths_max} Bath(s) </li>
                       </ul>
                   </div>  
                   <div className={styles.home_button}>
@@ -73,7 +74,10 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
     ))
     return (
         <div className={styles.container}>
-            {itemsMapper}
+            <div className={styles.home_container}>
+                {itemsMapper}
+            </div>
+            <Pagination number={totalPagesNumber} callback={handleClickPageNumber}/>
         </div>
     )
 }
