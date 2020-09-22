@@ -10,7 +10,7 @@ import saved from '@fortawesome/free-solid-svg-icons/faHeart';
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel'
 import Pagination from '../Pagination/Pagination'
-import { setClassActive } from '../../helpers/util'
+import { formatNumber, setClassActive } from '../../helpers/util'
 
 interface IHomesGridDisplayProp {
     items?: Properties[]
@@ -58,11 +58,11 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
                 </div>
                <div className={styles.showcase_header}>
                    {item.client_display_flags.is_new_listing ? <span className={styles.tag}>New</span> : null}
-                   <p>{item.address.neighborhood_name}, {item.address.line}</p>
+                   <p>{item.address.neighborhood_name} {item.address.line}</p>
                </div> 
                <div className={styles.showcase_footer}>
                    <div>
-                        <h4>${item.community.price_min} - ${item.community.price_max} 
+                        <h4>{formatNumber(item.community.price_min)} - {formatNumber(item.community.price_max)} 
                             <span>/ mo</span>
                         </h4>
                    </div>

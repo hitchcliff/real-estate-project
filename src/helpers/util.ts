@@ -57,3 +57,8 @@ export const formatData = (data: Result | undefined): FormattedData | undefined 
     return formattedData // return formatted data
 }
 
+// format number
+export const formatNumber = (num: number) => {
+    return "$" + num.toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+

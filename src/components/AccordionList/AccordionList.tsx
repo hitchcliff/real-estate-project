@@ -43,7 +43,7 @@ const AccordionList = () => {
                     <AccordionItemHeading>
                         <AccordionItemButton>
                             <div className={styles.heading}>
-                                <h4>Building size</h4> 
+                                <h4>Size</h4> 
                                 <span>+</span>
                             </div> 
                         </AccordionItemButton>
@@ -62,7 +62,7 @@ const AccordionList = () => {
                     </AccordionItemPanel>
                 </AccordionItem>
                 {/* Lot Size */}
-                <AccordionItem>
+                {/* <AccordionItem>
                     <AccordionItemHeading>
                         <AccordionItemButton>
                             <div className={styles.heading}>
@@ -83,7 +83,7 @@ const AccordionList = () => {
                             </div>
                         </div>
                     </AccordionItemPanel>
-                </AccordionItem>
+                </AccordionItem> */}
             </Accordion>
         </div>
     )

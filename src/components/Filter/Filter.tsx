@@ -32,6 +32,11 @@ const Filter: React.FC<IFilterProp> = (props): ReactElement=> {
                 <SortByBeds/>
                 <SortByBaths/>
                 <AccordionList/>
+                <div className={styles.button}>
+                    <button className="search-button">
+                        <a href="http://google.com">Search</a>
+                    </button>
+                </div>
            </div>
         </div>
     )

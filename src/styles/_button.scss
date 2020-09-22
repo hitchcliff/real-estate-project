@@ -7,3 +7,21 @@
     font-weight: $regular;
     font-family: 'Nunito', sans-serif;
 }
+
+.search-button {
+    border: none;
+    background: none;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    a {
+        text-decoration: none;
+        color: white;
+        background: $sub;
+        font-family: 'Nunito', sans-serif;
+        padding: 10px 40px;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: $bold;
+    }
+}

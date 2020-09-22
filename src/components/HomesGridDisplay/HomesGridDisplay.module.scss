@@ -26,7 +26,6 @@
                     height: 50%;
                 }
             }
-            
 
             .home_overlay {
                 opacity: 0;
@@ -35,10 +34,12 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-evenly;
-                background: rgba($color: $sub, $alpha: .5);
+                background: rgba($color: $sub, $alpha: .7);
                 position: absolute;
                 top: -100%;
                 transition: all .3s ease;
+                border-bottom-right-radius: 50px;
+                border-bottom-left-radius: 50px;
                 .home_icons {
                     ul {
                         display: flex;
