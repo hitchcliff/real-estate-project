@@ -1,10 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { SortByBaths_action } from '../../Actions/Filters.action';
+import { parseStrToNum } from '../../helpers/filter';
 import ToggleSelectionNumbers from '../ToggleSelectionNumbers/ToggleSelectionNumbers';
 import styles from './SortByBaths.module.scss';
 const SortByBaths = () => {
-    const [value, setValue] = useState<string | null>("0")
+    const [value, setValue] = useState<number>(1)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            dispatch(SortByBaths_action(value))
+        })
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [value])
+
     const handleToggleSelection = (e: string) => {
-        setValue(e) // set the value we get from our callback
+        const targetValue = parseStrToNum(e)
+        setValue(targetValue) // set the value we get from our callback
     }
     return (
         <div className={styles.baths}>

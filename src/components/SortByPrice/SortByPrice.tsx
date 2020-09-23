@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { SortByPrice_action } from '../../Actions/Filters.action'
-import { parseStrToNum } from '../../helpers/filter'
+import { filterTimeOut, parseStrToNum } from '../../helpers/filter'
 import { Price } from '../../types/Filters.types'
 import styles from './SortByPrice.module.scss'
 const SortByPrice = () => {
-    const [minPrice, setMinPrice] = useState<Price["min"]>(0) // 0
-    const [maxPrice, setMaxPrice] = useState<Price["max"]>(10000000) //10m
+    const [price, setPrice] = useState<Price>({
+        min: 0,
+        max: 10000000 // 10m
+    })
     
     const dispatch = useDispatch();
     useEffect(() => {
         const timer = setTimeout(() => {
-            dispatch(SortByPrice_action(minPrice, maxPrice)); // action 
-        }, 1000);
+            dispatch(SortByPrice_action(price)); // action 
+        }, filterTimeOut);
 
         return() => {
             clearTimeout(timer); // clean the timer in 1s if there's new price
         }
-    }, [minPrice, maxPrice]) //  run this once we have a state
+    }, [price]) //  run this once we have a state
 
     return (
         <div className={styles.price}>
@@ -27,16 +29,24 @@ const SortByPrice = () => {
                        <span>$</span>
                        <input type="number" placeholder="Min" name="min" id="searchMin"
                             // set the placeholder
-                            value={minPrice === 0 ? "min" : minPrice}  // value min
-                            onChange={e=> setMinPrice(parseStrToNum(e.currentTarget.value))}
+                            value={price.min === 0 ? "min" : price.min}  // value min
+                            // set the price
+                            onChange={e=> setPrice({
+                                min: parseStrToNum(e.currentTarget.value),
+                                max: price.max,
+                            })}
                        />
                    </div>
                    <div className={styles.form_group}>
                        <span>$</span>
                        <input type="number" placeholder="Max" name="max" id="searchMax"
                             // set the placeholder
-                            value={maxPrice === 10000000 ? "max" : maxPrice} // value max 
-                            onChange={e=> setMaxPrice(parseStrToNum(e.currentTarget.value))}
+                            value={price.max === 10000000 ? "max" : price.max} // value max 
+                            // set the price
+                            onChange={e=> setPrice({
+                               min: price.min,
+                               max: parseStrToNum(e.currentTarget.value) 
+                            })}
                        />
                    </div>
                </form>

@@ -46,5 +46,14 @@ export type Size = {
     sqft_max: number
 }
 
+export type Filters = {
+    price: Price,
+    property_type: string,
+    beds: number,
+    baths: number,
+    listing: string,
+    size: Size 
+}
+
 // all types in this file
 export type FiltersDispatchTypes = get_price | get_property_type | get_beds | get_baths | get_listing_status | get_size

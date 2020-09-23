@@ -1,4 +1,3 @@
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { 
     FiltersDispatchTypes, 
     GET_BATHS, 
@@ -11,18 +10,17 @@ import {
     Size 
 } from "../types/Filters.types";
 
-interface InitialStateProp { // types
+export interface IFilterProp { // types
     property_type?: string,
     beds?: number,
     baths?: number,
     listing?: string,
-    sqft_min?: Size,
-    sqft_max?: Size,
+    size?: Size,
     price?: Price
 }
-const initialState: InitialStateProp = {} // state
+const initialState: IFilterProp = {} // state
 
-export const FilterReducer = (state: InitialStateProp = initialState, action: FiltersDispatchTypes) => {
+export const FilterReducer = (state: IFilterProp = initialState, action: FiltersDispatchTypes) => {
     switch(action.type) {
         case GET_PRICE: { // store the price
             return {
@@ -57,7 +55,7 @@ export const FilterReducer = (state: InitialStateProp = initialState, action: Fi
         case GET_SIZE: { // store the size
             return {
                 ...state,
-                listing: action.payload
+                size: action.payload
             }
         }
         default: // keep the default state 

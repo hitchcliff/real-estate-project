@@ -10,7 +10,7 @@ import saved from '@fortawesome/free-solid-svg-icons/faHeart';
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel'
 import Pagination from '../Pagination/Pagination'
-import { formatNumber, setClassActive } from '../../helpers/util'
+import { formatNumber } from '../../helpers/util'
 
 interface IHomesGridDisplayProp {
     items?: Properties[]

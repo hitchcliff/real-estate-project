@@ -12,7 +12,7 @@ import {
 } from "../types/Filters.types";
 
 // price action
-export const SortByPrice_action = (min: Price["min"], max: Price["max"]) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
+export const SortByPrice_action = ({min, max}: Price) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
     try {
        dispatch({
            type: GET_PRICE,
@@ -39,11 +39,11 @@ export const SortByProperty_action = (property: string) => async(dispatch: Dispa
 }
 
 // beds action
-export const SortByBeds_action = (beds: string) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
+export const SortByBeds_action = (beds: number) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
     try {
        dispatch({
            type: GET_BEDS,
-           payload: parseInt(beds)
+           payload: beds
        }) 
     } catch (error) {
        console.log('Beds Error', error) 
@@ -51,11 +51,11 @@ export const SortByBeds_action = (beds: string) => async (dispatch: Dispatch<Fil
 }
 
 // baths action
-export const SortByBaths_action = (baths: string) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
+export const SortByBaths_action = (baths: number) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
     try {
        dispatch({
            type: GET_BATHS,
-           payload: parseInt(baths) // parse to int
+           payload: baths 
        }) 
     } catch (error) {
        console.log('Baths Error', error) 
@@ -75,11 +75,14 @@ export const SortByListingStatus_action = (listing: string) => async (dispatch: 
 }
 
 // size
-export const SortBySize_action = (size: Size) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
+export const SortBySize_action = ({sqft_min, sqft_max} : Size) => async (dispatch: Dispatch<FiltersDispatchTypes>) => {
     try {
        dispatch({
             type: GET_SIZE,
-            payload: size 
+            payload: {
+                sqft_min,
+                sqft_max
+            } 
        }) 
     } catch (error) {
       console.log('Listing Error', error)  

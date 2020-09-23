@@ -5,10 +5,43 @@ import { ListingsContent } from '../Filter/Content/Filter.content';
 import RadioToggle from '../RadioToggle/RadioToggle';
 import styles from './AccordionList.module.scss';
 import cx from 'classnames';
+import { filterTimeOut, parseStrToNum } from '../../helpers/filter';
+import { useDispatch } from 'react-redux';
+import { SortByListingStatus_action, SortBySize_action } from '../../Actions/Filters.action';
+import { Size } from '../../types/Filters.types';
+import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
 const AccordionList = () => {
     let ariaExpanded = document.querySelectorAll('.accordion__button');
     const [state, setState] = useState(false) // this is for accordion
+    const [listing, setListing] = useState<string>("standard")
+    const [size, setSize] = useState<Size>({
+        sqft_min: 0,
+        sqft_max: 10000 // 10k
+    })
+    const dispatch = useDispatch()
 
+    // for listing 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            dispatch(SortByListingStatus_action(listing))
+        }, filterTimeOut)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [listing]) 
+
+    // for size
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            dispatch(SortBySize_action(size))
+        }, filterTimeOut)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [size])
+
+    // set class active in accordion
     useEffect(() => {
         const active = getAccordionActiveItem(ariaExpanded); // get current item that is active
         setClassActive(active, ariaExpanded); // set current item a class
@@ -17,7 +50,7 @@ const AccordionList = () => {
 
     const handleRadioToggle = (e: React.ChangeEvent<HTMLInputElement>) => { // get the value in the listing
         const target = e.target.value; // the selected value in radio buttons
-        console.log(target)
+        setListing(target);
     }
     return (
         <div className={styles.accordion}>
@@ -51,11 +84,23 @@ const AccordionList = () => {
                     <AccordionItemPanel>
                         <div className={cx(styles.content, styles.building)}>
                             <div>
-                                <input type="number" placeholder="Max" name="building_size" id="building"/>
+                                <input type="number" placeholder="min" name="building_size" id="building"
+                                    value={size.sqft_min === 0 ? "min" : size.sqft_min}
+                                    onChange={e=> setSize({
+                                        sqft_min: parseStrToNum(e.currentTarget.value),
+                                        sqft_max: size.sqft_max
+                                    })} 
+                                />
                                 <span>sqft</span>
                             </div>
                             <div>
-                                <input type="number" placeholder="Min" name="building_size" id="building"/>
+                                <input type="number" placeholder="max" name="building_size" id="building"
+                                    value={size.sqft_max === 10000 ? "max" : size.sqft_max}
+                                    onChange={e=> setSize({
+                                        sqft_max: parseStrToNum(e.currentTarget.value),
+                                        sqft_min: size.sqft_min,
+                                    })} 
+                                />
                                 <span>sqft</span>
                             </div>
                         </div>

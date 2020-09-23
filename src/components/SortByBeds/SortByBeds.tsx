@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { SortByBeds_action } from '../../Actions/Filters.action'
+import { filterTimeOut, parseStrToNum } from '../../helpers/filter'
 import ToggleSelection from '../ToggleSelectionNumbers/ToggleSelectionNumbers'
 import styles from './SortByBeds.module.scss'
 const SortByBeds = () => {
-    const [value, setValue] = useState <string | null >(null) // use state value
+    const [value, setValue] = useState <number>(1) // use state value
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            dispatch(SortByBeds_action(value))
+        }, filterTimeOut)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [value])
+
     const handleToggleSelection = (e: string) => { //callback function
-        setValue(e) // set the value
+        let targetValue = parseStrToNum(e)
+        setValue(targetValue) // set the value
     }
     return (
         <div className={styles.beds}>
