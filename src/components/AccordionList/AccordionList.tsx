@@ -9,13 +9,13 @@ import { filterTimeOut, parseStrToNum } from '../../helpers/filter';
 import { useDispatch } from 'react-redux';
 import { SortByListingStatus_action, SortBySize_action } from '../../Actions/Filters.action';
 import { Size } from '../../types/Filters.types';
-import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
+
 const AccordionList = () => {
     let ariaExpanded = document.querySelectorAll('.accordion__button');
     const [state, setState] = useState(false) // this is for accordion
     const [listing, setListing] = useState<string>("standard")
     const [size, setSize] = useState<Size>({
-        sqft_min: 0,
+        sqft_min: 1,
         sqft_max: 10000 // 10k
     })
     const dispatch = useDispatch()
@@ -52,6 +52,23 @@ const AccordionList = () => {
         const target = e.target.value; // the selected value in radio buttons
         setListing(target);
     }
+
+    const handleSetMinSize = (e: string) => {
+        if(e === "min") return;
+        setSize({
+            sqft_min: parseStrToNum(e),
+            sqft_max: size.sqft_max
+        })
+    }
+
+    const handleSetMaxSize = (e: string) => {
+        if(e === "max") return;
+        setSize({
+            sqft_min: size.sqft_min,
+            sqft_max: parseStrToNum(e) 
+        })
+    }
+
     return (
         <div className={styles.accordion}>
             <Accordion onChange={e => setState(!state)}>
@@ -85,21 +102,15 @@ const AccordionList = () => {
                         <div className={cx(styles.content, styles.building)}>
                             <div>
                                 <input type="number" placeholder="min" name="building_size" id="building"
-                                    value={size.sqft_min === 0 ? "min" : size.sqft_min}
-                                    onChange={e=> setSize({
-                                        sqft_min: parseStrToNum(e.currentTarget.value),
-                                        sqft_max: size.sqft_max
-                                    })} 
+                                    value={size.sqft_min}
+                                    onChange={e=> handleSetMinSize(e.currentTarget.value)} 
                                 />
                                 <span>sqft</span>
                             </div>
                             <div>
                                 <input type="number" placeholder="max" name="building_size" id="building"
-                                    value={size.sqft_max === 10000 ? "max" : size.sqft_max}
-                                    onChange={e=> setSize({
-                                        sqft_max: parseStrToNum(e.currentTarget.value),
-                                        sqft_min: size.sqft_min,
-                                    })} 
+                                    value={size.sqft_max}
+                                    onChange={e=> handleSetMaxSize(e.currentTarget.value)}
                                 />
                                 <span>sqft</span>
                             </div>

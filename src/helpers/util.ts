@@ -51,6 +51,7 @@ export const formatData = (data: Result | undefined): FormattedData | undefined 
            address: property.address,
            client_display_flags: property.client_display_flags,
            photos: property.photos,
+           prop_type: property.prop_type,
         })
     })
 

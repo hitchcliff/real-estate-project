@@ -6,7 +6,7 @@ interface get_price {
 
 export interface Price {
     min?: number,
-    max?: number
+    max?: number | string
 }; 
 
 export const GET_PROPERTY_TYPE = "GET_PROPERTY_TYPE";

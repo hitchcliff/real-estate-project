@@ -46,7 +46,8 @@ export type Properties = {
     property_id: string,
     community: Community,
     address: Address,
-    client_display_flags: ClientDisplayFlags
+    client_display_flags: ClientDisplayFlags,
+    prop_type: string,
 }
 
 export type Community = {

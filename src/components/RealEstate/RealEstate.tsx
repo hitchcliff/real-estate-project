@@ -28,7 +28,7 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     }, [])
 
     const new_data = formatData(data); // format data
-
+    
     useEffect(() => {
         const timer = setTimeout( async () => {
             if(!new_data) return;
@@ -37,7 +37,7 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
         return () => {
             clearTimeout(timer)
         }
-    }, [new_data]) // can be controlled
+    }, [new_data, filters]) // can be controlled
 
     if(!new_data) return <></>; // simply return if we dont have any data 
     

@@ -6,7 +6,7 @@ import { Price } from '../../types/Filters.types'
 import styles from './SortByPrice.module.scss'
 const SortByPrice = () => {
     const [price, setPrice] = useState<Price>({
-        min: 0,
+        min: 1,
         max: 10000000 // 10m
     })
     
@@ -21,6 +21,22 @@ const SortByPrice = () => {
         }
     }, [price]) //  run this once we have a state
 
+    // handle setting min price
+    const handleSetMinPrice = (e: number) => {
+        setPrice({
+            min: e,
+            max: price.max
+        })
+        
+    }
+
+    const handleSetMaxPrice = (e: number) => {
+       setPrice({
+           min: price.min,
+           max: e
+       }) 
+    }
+
     return (
         <div className={styles.price}>
                <h4>Sort by Price</h4>
@@ -29,24 +45,18 @@ const SortByPrice = () => {
                        <span>$</span>
                        <input type="number" placeholder="Min" name="min" id="searchMin"
                             // set the placeholder
-                            value={price.min === 0 ? "min" : price.min}  // value min
+                            value={price.min}  // value min
                             // set the price
-                            onChange={e=> setPrice({
-                                min: parseStrToNum(e.currentTarget.value),
-                                max: price.max,
-                            })}
+                            onChange={e=> handleSetMinPrice(parseInt(e.currentTarget.value))}
                        />
                    </div>
                    <div className={styles.form_group}>
                        <span>$</span>
                        <input type="number" placeholder="Max" name="max" id="searchMax"
                             // set the placeholder
-                            value={price.max === 10000000 ? "max" : price.max} // value max 
+                            value={price.max} // value max 
                             // set the price
-                            onChange={e=> setPrice({
-                               min: price.min,
-                               max: parseStrToNum(e.currentTarget.value) 
-                            })}
+                            onChange={e=> handleSetMaxPrice(parseInt(e.currentTarget.value))}
                        />
                    </div>
                </form>
