@@ -1,4 +1,37 @@
 @import '../../styles/global';
 .container {
     padding: 50px;
+    position: relative;
+    overflow: hidden;
+    .view {
+        animation: slideInLeft .3s ease;
+        display: block;
+    }
+    .default {
+        animation: slideInRight .3s ease;
+        display: none;
+    }
+    
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(110%); // left side 110%
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(110%);
+    }
 }

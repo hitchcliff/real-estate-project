@@ -6,6 +6,10 @@ import styles from './ForRent.module.scss'
 
 // icons
 import HomesDisplayHeader from '../HomesDisplayHeader/HomesDisplayHeader';
+import HomesListDisplay from '../HomesListDisplay/HomesListDisplay';
+import HomesDisplayMap from '../HomesDisplayMap/HomesDisplayMap';
+import { useSelector } from 'react-redux';
+import { RootStore } from '../../Store';
 
 interface IForRentProp {
     items?: Properties[] 
@@ -13,15 +17,24 @@ interface IForRentProp {
 }
 const ForRent: React.FC<IForRentProp> = (props) => {
     const { items, tracker } = props;
+    const view = useSelector((state: RootStore) => state.view)
     const new_items = rent_propertiesDataFormat(items) // format data
-    
+
     return (
         <div className={styles.container}>
             {/* Display Header */}
             <HomesDisplayHeader tracker={tracker}/>
-            {/* Grid Display */}
-            <HomesGridDisplay items={new_items}/>
-            {/* List Display */}
+
+            <div className={view ? styles.view : styles.default}>
+                {/* Grid Display */}
+                <HomesGridDisplay items={new_items}/>
+            </div>
+            <div className={!view ? styles.view : styles.default}>
+                {/* List Display */}
+                <HomesListDisplay items={new_items}/>
+                {/* Map */}
+                <HomesDisplayMap/> 
+            </div>
         </div>
     )
 }

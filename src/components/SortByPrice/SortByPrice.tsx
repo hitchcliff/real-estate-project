@@ -45,7 +45,7 @@ const SortByPrice = () => {
                        <span>$</span>
                        <input type="number" placeholder="Min" name="min" id="searchMin"
                             // set the placeholder
-                            value={price.min}  // value min
+                            value={price.min === 1 ? "" : price.min}  // value min
                             // set the price
                             onChange={e=> handleSetMinPrice(parseInt(e.currentTarget.value))}
                        />
@@ -54,7 +54,7 @@ const SortByPrice = () => {
                        <span>$</span>
                        <input type="number" placeholder="Max" name="max" id="searchMax"
                             // set the placeholder
-                            value={price.max} // value max 
+                            value={price.max === 10000000 ? "" : price.max} // value max 
                             // set the price
                             onChange={e=> handleSetMaxPrice(parseInt(e.currentTarget.value))}
                        />
