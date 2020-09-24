@@ -19,7 +19,6 @@ const SortByBeds = () => {
 
     const handleToggleSelection = (e: string) => { //callback function
         let targetValue = parseStrToNum(e)
-        console.log(e)
         setValue(targetValue) // set the value
     }
     return (

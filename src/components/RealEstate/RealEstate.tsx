@@ -27,7 +27,7 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     // final and filtered results will be used in components rent and sale
     const [results, setResults] = useState<Properties[]>([])
 
-    // filters
+    // get filters from reducer
     const filters = useSelector((state: RootStore) => state.filters) // get the state
     useEffect(() => {
         dispatch(ListForRentAction()); // call the action to fetch
@@ -36,17 +36,15 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     // current data from api format [2]
     const new_data = formatData(data); // format data
     
+    // filter the data
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if(!new_data) return;
-            // filtered results [3]
-            const finalResults = filterData(new_data, filters) // filter the data
-            if(finalResults) setResults(finalResults);
-        })
-        return () => {
-            clearTimeout(timer)
-        }
-    }, [new_data, filters]) // can be controlled
+        if(!new_data) return;
+        const finalResults = filterData(new_data, filters) // filter the data
+
+        if(!finalResults) return
+        setResults(finalResults);
+        
+    }, [filters]) 
 
     if(!new_data) return <></>; // simply return if we dont have any data 
     
