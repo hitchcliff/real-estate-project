@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './RealEstate.module.scss';
 
 import { RootStore } from '../../Store'; // types for state
@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Switch, Route, RouteComponentProps } from 'rea
 import ForRent from '../ForRent/ForRent';
 import ForSale from '../ForSale/ForSale';
 import { filterData } from '../../helpers/filter';
+import { Properties } from '../../types/ListForRent.types';
 
 interface IRealEstateProp {
     url: string,
@@ -21,18 +22,26 @@ interface IRealEstateProp {
 
 const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JSX.Element => {
     const dispatch = useDispatch();
+    // current data from api [1]
     const { loading, data } = useSelector((state: RootStore) => state.listForRent)
+    // final and filtered results will be used in components rent and sale
+    const [results, setResults] = useState<Properties[]>([])
+
+    // filters
     const filters = useSelector((state: RootStore) => state.filters) // get the state
     useEffect(() => {
         dispatch(ListForRentAction()); // call the action to fetch
     }, [])
 
+    // current data from api format [2]
     const new_data = formatData(data); // format data
     
     useEffect(() => {
-        const timer = setTimeout( async () => {
+        const timer = setTimeout(() => {
             if(!new_data) return;
-            filterData(new_data, filters) // filter the data
+            // filtered results [3]
+            const finalResults = filterData(new_data, filters) // filter the data
+            if(finalResults) setResults(finalResults);
         })
         return () => {
             clearTimeout(timer)
@@ -47,11 +56,11 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
             <Switch>
                 {/* For rent page */}
                 <Route exact path={[match.url, match.url + '/rent']}>
-                    <ForRent items={new_data.properties} tracker={new_data.tracking_params} />
+                    <ForRent items={results} tracker={new_data.tracking_params} />
                 </Route>
                 {/* For sale page */}
                 <Route exact path={match.url + '/sale'}>
-                    <ForSale items={new_data.properties} />
+                    <ForSale items={results} />
                 </Route>
             </Switch>
         </div>

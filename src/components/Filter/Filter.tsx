@@ -34,7 +34,7 @@ const Filter: React.FC<IFilterProp> = (props): ReactElement=> {
                 <AccordionList/>
                 <div className={styles.button}>
                     <button className="search-button">
-                        <a href="http://google.com">Search</a>
+                        <a href="http://google.com">Save search</a>
                     </button>
                 </div>
            </div>
