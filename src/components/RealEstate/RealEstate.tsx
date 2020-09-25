@@ -24,6 +24,7 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     const dispatch = useDispatch();
     // current data from api [1]
     const { loading, data } = useSelector((state: RootStore) => state.listForRent)
+    const [newData, setNewData] = useState({})
     // final and filtered results will be used in components rent and sale
     const [results, setResults] = useState<Properties[]>([])
 
@@ -35,7 +36,6 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
 
     // current data from api format [2]
     const new_data = formatData(data); // format data
-    
     // filter the data
     useEffect(() => {
         if(!new_data) return;
@@ -47,10 +47,9 @@ const RealEstate = ({match}: RouteComponentProps<IRealEstateProp, any, any>): JS
     }, [filters]) 
 
     if(!new_data) return <></>; // simply return if we dont have any data 
-    
     return (
         <div className={styles.container}>
-            <Filter filter={new_data?.tracking_params}/>
+            
             <Switch>
                 {/* For rent page */}
                 <Route exact path={[match.url, match.url + '/rent']}>

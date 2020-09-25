@@ -4,11 +4,12 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 interface IHomesDisplayCarouselProp {
     images: Object[],
-    alt?: string
+    alt: string,
+    thumbs: boolean,
 }
 
 const HomesDisplayCarousel: React.FC<IHomesDisplayCarouselProp> = (props) => {
-    const { images, alt } = props
+    const { images, alt, thumbs } = props
     if(!images || !alt) return<></>;
     const _images = images.slice(0, 5); // get images between 0 and 5 array 
     const values = [] // container 
@@ -17,7 +18,7 @@ const HomesDisplayCarousel: React.FC<IHomesDisplayCarouselProp> = (props) => {
     }
     
     return (
-       <Carousel>
+       <Carousel showThumbs={thumbs}>
            {values.map((values,i) => (
                <div key={i}>
                    <img src={values} alt={alt} />

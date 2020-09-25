@@ -2,6 +2,7 @@
 @import './styles/global'; // global variables
 @import './styles/button'; // button styles
 @import './styles/accordion'; // accordion active
+@import './styles/carousel'; // carousel
 * {
     margin: 0;
     padding: 0;
@@ -19,4 +20,8 @@ input:focus, button:focus { outline: none;}
 
 h2 {
     font-weight: $regular;
+}
+
+.carousel-root {
+    height: 100%;
 }

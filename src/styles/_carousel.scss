@@ -1,0 +1,11 @@
+// list container
+.list {
+    .control-dots {
+        bottom: 0 !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+    }
+}

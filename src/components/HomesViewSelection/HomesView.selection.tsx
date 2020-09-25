@@ -9,7 +9,7 @@ import { ViewAction } from '../../Actions/View.action'
 import { filterTimeOut } from '../../helpers/filter'
 
 const HomesViewSelection = () => {
-    const [state, setState] = useState<number>(1)
+    const [state, setState] = useState<number>(0) // 0 for development purposes
     const dispatch = useDispatch()
 
     const handleToggleSelectionIcons = (e: string) => {

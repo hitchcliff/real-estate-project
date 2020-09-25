@@ -54,7 +54,7 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
             <div className={styles.home_showcase}>
                 {/* Image */}
                 <div className={styles.showcase_image}>
-                    <HomesDisplayCarousel images={item.photos} alt={item.address.line}/>
+                    <HomesDisplayCarousel images={item.photos} alt={item.address.line} thumbs={false}/>
                 </div>
                <div className={styles.showcase_header}>
                    {item.client_display_flags.is_new_listing ? <span className={styles.tag}>New</span> : null}

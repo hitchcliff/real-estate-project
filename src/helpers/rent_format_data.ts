@@ -3,7 +3,7 @@ import { Address, ClientDisplayFlags, Community, Properties } from "../types/Lis
 // Properties data format for Rent
 export const rent_propertiesDataFormat = (data: Properties[] | undefined): Properties[] | undefined => {
     if(!data) return;
-    const properties: any = [];
+    const properties: Properties[] = [];
 
     // format data for community
     const Community = (item: Community) => {
@@ -42,6 +42,9 @@ export const rent_propertiesDataFormat = (data: Properties[] | undefined): Prope
            community: Community(item.community),
            address: Address(item.address),
            client_display_flags: ClientDisplayFlags(item.client_display_flags),
+           last_update: item.last_update,
+           prop_status: item.prop_status,
+           prop_type: item.prop_type,
        }) 
     })
 

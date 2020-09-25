@@ -48,6 +48,8 @@ export type Properties = {
     address: Address,
     client_display_flags: ClientDisplayFlags,
     prop_type: string,
+    last_update: Date,
+    prop_status: string,
 }
 
 export type Community = {

@@ -27,7 +27,6 @@ export const setClassActive = (index: number, item: NodeListOf<Element>) => {
 export const formatData = (data: Result | undefined): FormattedData | undefined => {
     if(!data) return; //return if data doesn't exist
     const { meta: {tracking_params}, properties} = data;
-
     const new_properties: Properties[] = []; // new properties stored
     let new_tracking_params: TrackingParams = { // new tracking_params store
         channel: tracking_params.channel,
@@ -52,6 +51,8 @@ export const formatData = (data: Result | undefined): FormattedData | undefined 
            client_display_flags: property.client_display_flags,
            photos: property.photos,
            prop_type: property.prop_type,
+           last_update: property.last_update,
+           prop_status: property.prop_status,
         })
     })
 
@@ -63,3 +64,7 @@ export const formatNumber = (num: number) => {
     return "$" + num.toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
+export const propStatus = (status: string) => {
+    if(status === "for_rent") return "For Rent";
+    return "For Sale";
+}
