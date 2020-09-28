@@ -29,6 +29,25 @@ h2 {
   height: 100%;
 }
 
+// map
 .leaflet-container {
   height: 100vh;
+}
+
+// marker
+.marker {
+  .leaflet-popup {
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    top: -80px !important;
+  }
+
+  .leaflet-popup-tip-container {
+    display: none !important;
+  }
+
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-tip {
+    box-shadow: none !important;
+  }
 }

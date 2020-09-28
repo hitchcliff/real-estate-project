@@ -73,6 +73,8 @@ export interface Address {
 export interface MapAddress extends Address {
   lat: number;
   lon: number;
+  photos: string;
+  price: number | null;
 }
 // map address or normal address
 export type MapAddressOrAddress = Address | MapAddress;

@@ -3,6 +3,34 @@
   position: sticky;
   top: 0;
 
+  .popup {
+    // details
+    .details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      span {
+        background: $sub;
+        color: white;
+        border-radius: 2px;
+        padding: 5px;
+      }
+    }
+
+    // image
+    .image {
+      overflow: hidden;
+      width: 300px;
+      img {
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+
+  // custom icon
   .customIcon {
     position: relative;
     background: white;

@@ -2,6 +2,7 @@ import React from 'react';
 import RenderDOMServer from 'react-dom/server';
 import 'leaflet/dist/leaflet.css';
 import styles from './HomesDisplayMap.module.scss';
+import cx from 'classnames';
 
 // geojson
 import NYC from '../../geojson/nyc.json';
@@ -19,6 +20,7 @@ interface IHomesDisplayMapProp {
 const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
   const { address } = prop;
   const { features }: any = NYC;
+  const tile = `https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=${process.env.REACT_APP_MAP_KEY}`;
 
   const pos = {
     lat: 40.73061, // new york
@@ -26,11 +28,11 @@ const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
   };
 
   // custom marker
-  const customMarkerIcon = new Icon({
-    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    iconUrl: require('leaflet/dist/images/marker-icon.png'),
-    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-  });
+  // const customMarkerIcon = new Icon({
+  //   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  //   iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  //   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  // });
 
   // custom marker jsx icon
   const customMarkerDivIcon = new DivIcon({
@@ -45,10 +47,16 @@ const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
       position={[item.lat, item.lon]}
       icon={customMarkerDivIcon}
     >
-      <Popup>
-        <h4>
-          {item.line}, {item.neighborhood_name}, {item.city}
-        </h4>
+      <Popup className={styles.popup}>
+        <div className={styles.details}>
+          <h4>
+            {item.line}, {item.neighborhood_name}, {item.city}
+          </h4>
+          <span>{item.price}</span>
+        </div>
+        <div className={styles.image}>
+          <img src={item.photos} alt={item.photos} />
+        </div>
       </Popup>
     </Marker>
   ));
@@ -56,17 +64,20 @@ const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
   // feature
   const onEachFeature = (map: any, layer: any) => {
     const { options } = layer;
-    options.fillOpacity = 0.5;
-    options.fillColor = '#a7ff83';
-    options.weight = 0;
-    console.log(layer);
+  };
+
+  const style = {
+    weight: 3,
+    fillOpacity: 0,
+    backgroundColor: 'red',
+    borderColor: 'green',
   };
 
   return (
-    <div className={styles.container}>
+    <div className={cx(styles.container, 'marker')}>
       <Map zoom={10} center={[pos.lat, pos.lng]}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <GeoJSON data={features} onEachFeature={onEachFeature}>
+        <TileLayer url={tile} />
+        <GeoJSON style={style} data={features} onEachFeature={onEachFeature}>
           {mapMarker}
         </GeoJSON>
       </Map>
