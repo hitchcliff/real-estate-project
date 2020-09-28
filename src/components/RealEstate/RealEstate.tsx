@@ -6,8 +6,6 @@ import { ListForRentAction } from '../../Actions/ListForRent.actions';
 import { useDispatch, useSelector } from 'react-redux'; // react-redux
 import { formatData } from '../../helpers/util'; // utils
 
-import Filter from '../Filter/Filter'; // filter
-
 // React router
 import {
   BrowserRouter as Router,
@@ -18,7 +16,6 @@ import {
 import ForRent from '../ForRent/ForRent';
 import ForSale from '../ForSale/ForSale';
 import { filterData } from '../../helpers/filter';
-import { Properties } from '../../types/ListForRent.types';
 import { MapAndProperty } from '../../types';
 
 interface IRealEstateProp {

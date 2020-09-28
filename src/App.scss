@@ -16,19 +16,26 @@ body {
   outline: none;
 }
 
-#page-container {
-  margin-top: 100px;
-}
-
+// input and buttons
 input:focus,
 button:focus {
   outline: none;
 }
 
+// links
+a {
+  transition: all 0.2s ease;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+// heading
 h2 {
   font-weight: $regular;
 }
 
+// carousel
 .carousel-root {
   height: 100%;
 }
@@ -36,6 +43,7 @@ h2 {
 // map
 .leaflet-container {
   height: 100vh;
+  border-radius: 10px;
 }
 
 // marker

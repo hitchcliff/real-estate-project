@@ -29,12 +29,12 @@ const ForRent: React.FC<IForRentProp> = (props) => {
 
   return (
     <div className={styles.container}>
+      {/* Display Header */}
+      <HomesDisplayHeader tracker={tracker} />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
         <Filter filter={tracker} />
         <div className={styles.grid_container}>
-          {/* Display Header */}
-          <HomesDisplayHeader tracker={tracker} />
           {/* Grid Display */}
           <HomesGridDisplay items={new_items} />
         </div>
@@ -44,8 +44,6 @@ const ForRent: React.FC<IForRentProp> = (props) => {
           !view ? cx(styles.view, styles.list, 'list') : styles.default
         }
       >
-        {/* Display Header */}
-        <HomesDisplayHeader tracker={tracker} />
         <div className={styles.list_container}>
           {/* List Display */}
           <HomesListDisplay items={new_items} />

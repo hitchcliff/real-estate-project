@@ -14,7 +14,7 @@ const Navbar = () => {
 
       {/* menu */}
       <ul className={styles.menu}>
-        <li>
+        <li className={styles.active}>
           <Link to="/homes/sold">Home</Link>
         </li>
         <li>
