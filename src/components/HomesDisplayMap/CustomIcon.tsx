@@ -1,9 +1,17 @@
 import React from 'react';
+import { formatNumber2 } from '../../helpers/util';
+import { MapAddress } from '../../types/ListForRent.types';
 import styles from './HomesDisplayMap.module.scss';
-const CustomIcon = (props: any) => {
+interface ICustomIconProp {
+  items?: MapAddress;
+}
+const CustomIcon: React.FC<ICustomIconProp> = (props: any) => {
+  const { items } = props;
   return (
     <div className={styles.customIcon}>
-      <p>$1.2k</p>
+      <p key={items.photos}>
+        {items.price ? formatNumber2(items.price) : items.price}
+      </p>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+export { default as Navbar } from './Navbar/Navbar';
 export { default as Homepage } from './Homepage/Homepage';
 export { default as RealEstate } from './RealEstate/RealEstate';
 export { default as ForRent } from './ForRent/ForRent';
