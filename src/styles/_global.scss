@@ -12,3 +12,8 @@ $bold: 700;
 
 // Box shadows
 $box_shadow_1: 0px 0px 25px rgba(0, 0, 0, 0.1);
+$box_shadow_2: 0 0 15px
+  rgba(
+    $color: $main,
+    $alpha: 0.5,
+  );

@@ -8,10 +8,12 @@ const App = (): ReactElement => {
     <div className="App">
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact={true} path="/" component={Homepage} />
-          <Route path="/homes" component={RealEstate} />
-        </Switch>
+        <div id="page-container">
+          <Switch>
+            <Route exact={true} path="/" component={Homepage} />
+            <Route path="/homes" component={RealEstate} />
+          </Switch>
+        </div>
       </Router>
     </div>
   );

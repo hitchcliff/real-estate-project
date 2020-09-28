@@ -1,27 +1,41 @@
 .recent-search {
-    border-radius: 10px;
-    background: white;
-    border: none;
-    padding: 10px 15px;
-    color: $most_used;
-    font-weight: $regular;
-    font-family: 'Nunito', sans-serif;
+  border-radius: 10px;
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  color: $most_used;
+  font-weight: $regular;
+  font-family: 'Nunito', sans-serif;
 }
 
 .search-button {
-    border: none;
-    background: none;
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    a {
-        text-decoration: none;
-        color: white;
-        background: $sub;
-        font-family: 'Nunito', sans-serif;
-        padding: 10px 40px;
-        border-radius: 5px;
-        font-size: 1rem;
-        font-weight: $bold;
-    }
+  border: none;
+  background: none;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  a {
+    text-decoration: none;
+    color: white;
+    background: $sub;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: $bold;
+  }
+}
+
+// primary button
+.button-primary {
+  border: none;
+  a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: $sub;
+    padding: 12px 30px;
+    border-radius: 5px;
+    box-shadow: $box_shadow_2;
+    color: white;
+  }
 }

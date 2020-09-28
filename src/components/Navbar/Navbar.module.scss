@@ -1,0 +1,54 @@
+@import '../../styles/global';
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px;
+  box-shadow: $box_shadow_1;
+  position: fixed;
+  width: 100%;
+  z-index: 12415123;
+  background-color: white;
+  margin-top: -100px;
+
+  //   logo
+  .logo {
+    h2 {
+      font-size: 2rem;
+      color: $most_used;
+      font-weight: $bold;
+    }
+
+    span {
+      opacity: 1;
+
+      a {
+        text-decoration: none;
+        border-bottom: 2px solid $sub;
+        color: $sub;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    margin-right: -20px;
+    li {
+      list-style-type: none;
+      margin-right: 20px;
+      a {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        color: $most_used;
+        text-decoration: none;
+        font-weight: $regular;
+
+        &:active {
+          background-color: $sub;
+          color: white;
+        }
+      }
+    }
+  }
+}
