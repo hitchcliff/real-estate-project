@@ -4,24 +4,31 @@
 @import './styles/accordion'; // accordion active
 @import './styles/carousel'; // carousel
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 100%;
-    font-family: 'Nunito', sans-serif;
-    font-weight: $regular;
-    outline: none;  
+  font-size: 100%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: $regular;
+  outline: none;
 }
 
-input:focus, button:focus { outline: none;}
+input:focus,
+button:focus {
+  outline: none;
+}
 
 h2 {
-    font-weight: $regular;
+  font-weight: $regular;
 }
 
 .carousel-root {
-    height: 100%;
+  height: 100%;
+}
+
+.leaflet-container {
+  height: 100vh;
 }
