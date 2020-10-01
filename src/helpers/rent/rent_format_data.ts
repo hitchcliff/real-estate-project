@@ -1,18 +1,14 @@
-import {
-  Address,
-  ClientDisplayFlags,
-  Community,
-  Properties,
-} from '../types/ListForRent.types';
+import { Community, Address, ClientDisplayFlags } from '../../types';
+import { PropertiesRent } from '../../types/Rent.types';
 
 // Properties data format for Rent
 export const rent_propertiesDataFormat = (
-  data: Properties[] | undefined,
-): Properties[] | undefined => {
+  data: PropertiesRent[] | undefined,
+): PropertiesRent[] | undefined => {
   if (!data) return;
-  const properties: Properties[] = [];
+  const properties: PropertiesRent[] = [];
 
-  // format data for community
+  // format data for css mmunity
   const community = (item: Community): Community => {
     return {
       id: item.id,
@@ -32,6 +28,8 @@ export const rent_propertiesDataFormat = (
       line: item.line,
       city: item.city,
       neighborhood_name: item.neighborhood_name,
+      lon: item.lon,
+      lat: item.lat,
     };
   };
 

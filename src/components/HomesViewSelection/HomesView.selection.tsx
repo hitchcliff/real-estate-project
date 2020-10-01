@@ -6,7 +6,7 @@ import ToggleSelectionFaIcons from '../ToggleSelectionFaIcons/ToggleSelectionFaI
 
 import { useDispatch } from 'react-redux';
 import { ViewAction } from '../../Actions/View.action';
-import { filterTimeOut } from '../../helpers/filter';
+import { filterTimeOut } from '../../helpers/rent/filterRent';
 
 const HomesViewSelection = () => {
   const [state, setState] = useState<number>(1); // 0 for development purposes

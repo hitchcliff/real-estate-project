@@ -1,11 +1,11 @@
-import { IFilterProp } from '../Reducers/Filters.reducer';
-import { Properties } from '../types/ListForRent.types';
+import { IFilterProp } from '../../Reducers/Filters.reducer';
+import { PropertiesRent } from '../../types/Rent.types';
 
-export default class Stage {
-  private items: Properties[];
+export default class StageRent {
+  private items: PropertiesRent[];
   private filters: IFilterProp;
 
-  constructor(items: Properties[], filters: IFilterProp) {
+  constructor(items: PropertiesRent[], filters: IFilterProp) {
     this.items = items;
     this.filters = filters;
   }
@@ -24,7 +24,7 @@ export default class Stage {
     if (!price.min || !price.max) return; // check if min and max price existed
 
     // loop to all items we passed
-    const items: Properties[] = []; // all filtered items
+    const items: PropertiesRent[] = []; // all filtered items
     for (const prop of this.items) {
       const {
         prop_type,

@@ -1,14 +1,17 @@
+import React, { useState } from 'react';
+import styles from './HomesListDisplay.module.scss';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBath, faBed } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { ReactElement, useState } from 'react';
-import { Properties } from '../../types/ListForRent.types';
-import styles from './HomesListDisplay.module.scss';
-import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel';
 import { formatNumber, propStatus } from '../../helpers/util';
+
 import Pagination from '../Pagination/Pagination';
+import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel';
+import { PropertiesRent } from '../../types/Rent.types';
+
 interface IHomesListDisplayProp {
-  items?: Properties[];
+  items?: PropertiesRent[];
 }
 const HomesListDisplay: React.FC<IHomesListDisplayProp> = (prop) => {
   const { items } = prop;

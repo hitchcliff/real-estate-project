@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomesGridDisplay.module.scss';
-import { Properties } from '../../types/ListForRent.types';
 
 // solid
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,14 +10,17 @@ import {
   faBath,
 } from '@fortawesome/free-solid-svg-icons';
 import saved from '@fortawesome/free-solid-svg-icons/faHeart';
+
 // regular
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel';
+
 import Pagination from '../Pagination/Pagination';
 import { formatNumber } from '../../helpers/util';
+import { PropertiesRent } from '../../types/Rent.types';
 
 interface IHomesGridDisplayProp {
-  items?: Properties[];
+  items?: PropertiesRent[];
 }
 // tslint:disable-next-line: typedef
 const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {

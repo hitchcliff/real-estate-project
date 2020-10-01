@@ -1,39 +1,73 @@
-import React from 'react';
-import { rent_propertiesDataFormat } from '../../helpers/rent_format_data';
-import { TrackingParams } from '../../types/ListForRent.types';
-import HomesGridDisplay from '../HomesGridDisplay/HomesGridDisplay';
+import React, { useEffect, useState } from 'react';
 import styles from './ForRent.module.scss';
 import cx from 'classnames';
 
-// icons
+// components
+import HomesGridDisplay from '../HomesGridDisplay/HomesGridDisplay';
 import HomesDisplayHeader from '../HomesDisplayHeader/HomesDisplayHeader';
 import HomesListDisplay from '../HomesListDisplay/HomesListDisplay';
 import HomesDisplayMap from '../HomesDisplayMap/HomesDisplayMap';
-import { useSelector } from 'react-redux';
-import { RootStore } from '../../Store';
 import Filter from '../Filter/Filter';
+
+// state
+import { useDispatch, useSelector } from 'react-redux';
+import { RootStore } from '../../Store';
+import { PropertiesAction } from '../../Actions/Properties.action';
+
+// helpers
 import { getAddress } from '../../helpers/map.address';
-import { MapAndProperty } from '../../types';
+import { filterData } from '../../helpers/rent/filterRent';
+import { rent_propertiesDataFormat } from '../../helpers/rent/rent_format_data';
+import { PropertiesRent } from '../../types/Rent.types';
+import { formatDataRent } from '../../helpers/util';
+import { Properties } from '../../types';
 
-interface IForRentProp {
-  items: MapAndProperty[];
-  tracker: TrackingParams;
-}
-const ForRent: React.FC<IForRentProp> = (props) => {
-  const { items, tracker } = props;
-  const view = useSelector((state: RootStore) => state.view);
-  const new_items = rent_propertiesDataFormat(items); // format data for homes
-  const address = getAddress(items); // format address for map
+const ForRent = () => {
+  const dispatch = useDispatch();
 
-  if (!new_items || !address) return <></>;
+  // current data from api [1]
+  const { loading, data } = useSelector((state: RootStore) => state.properties);
+
+  // final and filtered results will be used in components rent
+  const [results, setResults] = useState<PropertiesRent[]>([]);
+
+  // get filters from reducer
+  const filters = useSelector((state: RootStore) => state.filters); // get the state
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(PropertiesAction('list_for_rent')); // call the action to fetch
+    });
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // current data from api format [2]
+  const new_data = formatDataRent(data); // format data
+
+  // filter the data [3]
+  useEffect(() => {
+    if (!new_data) return;
+    const finalResults = filterData(new_data, filters);
+
+    if (!finalResults) return;
+    setResults(finalResults);
+  }, [filters]);
+
+  const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
+  const new_items = rent_propertiesDataFormat(results); // format data for homes
+  const address = getAddress(results); // format address for map
+  console.log(address);
 
   return (
     <div className={styles.container}>
       {/* Display Header */}
-      <HomesDisplayHeader tracker={tracker} />
+      <HomesDisplayHeader tracker={new_data?.tracking_params} />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
-        <Filter filter={tracker} />
+        <Filter filter={new_data?.tracking_params} />
         <div className={styles.grid_container}>
           {/* Grid Display */}
           <HomesGridDisplay items={new_items} />

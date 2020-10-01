@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import { FilterReducer } from './Filters.reducer';
-import { ListForRentReducer } from './ListForRent.reducer';
-import testReducer from './test/test.reducer';
+import { PropertiesReducer } from './Properties.reducer';
 import { ViewReducer } from './View.reducer';
 
 const RootReducer = combineReducers({
-    test: testReducer,
-    view: ViewReducer,
-    listForRent: ListForRentReducer,
-    filters: FilterReducer,
-})
+  view: ViewReducer,
+  filters: FilterReducer,
+  properties: PropertiesReducer,
+});
 
-export default RootReducer  
+export default RootReducer;

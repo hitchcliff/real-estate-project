@@ -1,9 +1,15 @@
+import { CommonOptions } from 'child_process';
+import { TrackingParams } from '../types';
 import {
-  Result,
-  Properties,
-  TrackingParams,
-  FormattedData,
-} from '../types/ListForRent.types';
+  FormattedDataRent,
+  PropertiesRent,
+  ResultRent,
+} from '../types/Rent.types';
+import {
+  FormattedDataSale,
+  PropertiesSale,
+  ResultSale,
+} from '../types/Sale.types';
 
 export const getAccordionActiveItem = (items: NodeListOf<Element>) => {
   const result = [];
@@ -27,16 +33,16 @@ export const setClassActive = (index: number, item: NodeListOf<Element>) => {
   item[index].classList.add('active'); // add class to the button
 };
 
-// First Data Format
-export const formatData = (
-  data: Result | undefined,
-): FormattedData | undefined => {
+// First Data Format for Rent
+export const formatDataRent = (
+  data: ResultRent | undefined,
+): FormattedDataRent | undefined => {
   if (!data) return; // return if data doesn't exist
   const {
     meta: { tracking_params },
     properties,
   } = data;
-  const new_properties: Properties[] = []; // new properties stored
+  const new_properties: PropertiesRent[] = []; // new properties stored
   const new_tracking_params: TrackingParams = {
     // new tracking_params store
     channel: tracking_params.channel,

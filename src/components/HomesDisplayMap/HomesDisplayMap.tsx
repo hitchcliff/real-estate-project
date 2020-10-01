@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RenderDOMServer from 'react-dom/server';
 import 'leaflet/dist/leaflet.css';
 import styles from './HomesDisplayMap.module.scss';
@@ -9,10 +9,10 @@ import NYC from '../../geojson/nyc.json';
 
 // map
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
-import { MapAddress } from '../../types/ListForRent.types';
 import { DivIcon } from 'leaflet';
 import CustomIcon from './CustomIcon';
 import { formatNumber } from '../../helpers/util';
+import { MapAddress } from '../../types/Rent.types';
 
 interface IHomesDisplayMapProp {
   address: MapAddress[];

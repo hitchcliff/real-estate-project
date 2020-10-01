@@ -1,6 +1,6 @@
-import { IFilterProp } from '../Reducers/Filters.reducer';
-import { FormattedData, Properties } from '../types/ListForRent.types';
-import Stage from './staging';
+import { IFilterProp } from '../../Reducers/Filters.reducer';
+import { FormattedDataSale, PropertiesSale } from '../../types/Sale.types';
+import StageSale from './sale.staging';
 
 export const parseStrToNum = (value: string) => parseInt(value, 0);
 export const filterTimeOut = 1000;
@@ -8,35 +8,30 @@ export const filterTimeOut = 1000;
 export const setPriceInSession = () => {};
 
 // filter data
-export const filterData = (
-  { properties, tracking_params }: FormattedData,
+export const filterDataSale = (
+  data: any,
   filters: IFilterProp,
-) => {
-  if (!filters && !properties && !tracking_params) return;
+): PropertiesSale[] | undefined => {
+  if (!data) return;
 
   const { listing } = filters;
   if (!listing) return;
 
-  let new_properties: Properties[] = [];
-
   // check for listing
-  const startListing = new Listing(properties, listing);
+  const startListing = new ListingSale(data.properties, listing);
   const firstTest = startListing.listing(); // first test
-  new_properties = firstTest; // new properties first
 
-  // start testing
-  const start = new Stage(new_properties, filters);
+  // start filtering
+  const start = new StageSale<PropertiesSale>(firstTest, filters);
   const finalTest = start.test(); // final test
   return finalTest; // return filtered tests
 };
 
-// staging of filters
-
 // listing check
-class Listing {
-  private items: Properties[];
+class ListingSale {
+  private items: PropertiesSale[];
   private isListing: string;
-  constructor(items: Properties[], isListing: string) {
+  constructor(items: PropertiesSale[], isListing: string) {
     this.items = items;
     this.isListing = isListing;
   }
@@ -61,7 +56,7 @@ class Listing {
   }
 
   private newListing() {
-    const props: Properties[] = [];
+    const props: PropertiesSale[] = [];
     for (const prop of this.items) {
       const {
         client_display_flags: { is_new_listing },
@@ -78,14 +73,14 @@ class Listing {
   private lowToHigh() {
     // sort array by ascending order
     return this.items.sort((a, b) => {
-      return a.community.price_max - b.community.price_max; // price max
+      return a.price - b.price; // price max
     });
   }
 
   private highToLow() {
     // sort array by descing order
     return this.items.sort((a, b) => {
-      return b.community.price_max - a.community.price_max;
+      return b.price - a.price;
     });
   }
 }
