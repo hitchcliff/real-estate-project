@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import ForRent from '../ForRent/ForRent';
 import ForSale from '../ForSale/ForSale';
+import ForSold from '../ForSold/ForSold';
 
 interface IRealEstateProp {
   url: string;
@@ -29,6 +30,10 @@ const RealEstate = ({
         {/* For sale page */}
         <Route exact={true} path={match.url + '/sale'}>
           <ForSale />
+        </Route>
+        {/* Sold page */}
+        <Route exact={true} path={match.url + '/sold'}>
+          <ForSold />
         </Route>
       </Switch>
     </div>

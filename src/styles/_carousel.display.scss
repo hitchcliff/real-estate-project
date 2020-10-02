@@ -1,0 +1,29 @@
+@import './global';
+.control-dots {
+  text-align: left !important;
+  bottom: 30px !important;
+  left: 10px;
+  outline: none;
+  z-index: 10;
+  .dot {
+    box-shadow: none !important;
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  .selected {
+    outline: none;
+    background: $sub !important;
+  }
+}
+.carousel-status {
+  top: 30px !important;
+  right: 5px !important;
+  display: none;
+}
+
+.control-arrow:hover {
+  background: none !important;
+  z-index: 0;
+}
