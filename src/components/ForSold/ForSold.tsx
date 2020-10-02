@@ -5,7 +5,7 @@ import cx from 'classnames';
 // components
 import PropertyGridDisplay from '../PropertyGridDisplay/PropertyGridDisplay';
 import Filter from '../Filter/Filter';
-import SalesDisplayHeader from '../SaleDisplayHeader/SalesDisplayHeader';
+import PropertyDisplayHeader from '../PropertyDisplayHeader/PropertyDisplayHeader';
 import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
 
 // state
@@ -20,6 +20,7 @@ import SaleListDisplay from '../SaleListDisplay/SaleListDisplay';
 import { getAddress2 } from '../../helpers/map.address';
 import { PropertiesSold, SoldPhotos } from '../../types/Sold.types';
 import { PropertiesFilterData } from '../../helpers/properties/properties.filter';
+import { TrackingParams } from '../../types';
 
 const ForSold = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const ForSold = () => {
   return (
     <div className={styles.container}>
       {/* Display Header */}
-      <SalesDisplayHeader<string>
+      <PropertyDisplayHeader<TrackingParams, string>
         prop_type="not for Sale"
         tracker={data?.meta.tracking_params}
       />
