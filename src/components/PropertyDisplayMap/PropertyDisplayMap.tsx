@@ -1,7 +1,7 @@
 import React from 'react';
 import RenderDOMServer from 'react-dom/server';
 import 'leaflet/dist/leaflet.css';
-import styles from './HomesDisplayMap.module.scss';
+import styles from './PropertyDisplayMap.module.scss';
 import cx from 'classnames';
 
 // geojson
@@ -18,7 +18,7 @@ interface IHomesDisplayMapProp {
   address: MapAddress[];
 }
 
-const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
+const PropertyDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
   const { address } = prop;
   const { features }: any = NYC;
   const tile = `https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=${process.env.REACT_APP_MAP_KEY}`;
@@ -52,7 +52,10 @@ const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
           <span>{item.price ? formatNumber(item.price) : item.price}</span>
         </div>
         <div className={styles.image}>
-          <img src={item.photos} alt={item.photos} />
+          <img
+            src={item.photos ? item.photos : item.thumbnail}
+            alt={item.photos}
+          />
         </div>
       </Popup>
     </Marker>
@@ -77,4 +80,4 @@ const HomesDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
   );
 };
 
-export default HomesDisplayMap;
+export default PropertyDisplayMap;

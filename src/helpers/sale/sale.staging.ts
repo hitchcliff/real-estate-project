@@ -25,28 +25,39 @@ export default class StageSale<TypeOfItem extends PropertiesSale> {
     if (!size.sqft_min && !size.sqft_max) return;
 
     // loop to all items we passed
-    const items: Array<TypeOfItem> = []; // all filtered items
+
+    const haveSize: Array<TypeOfItem> = []; // all filtered items
+    const noSize: Array<TypeOfItem> = []; // collecdtion of no lot and building sizes
+    const merged: Array<TypeOfItem> = [];
 
     for (const prop of this.items) {
-      if (
+      if (!prop.lot_size || !prop.building_size) {
+        noSize.push(prop);
+        merged.push(prop);
+      } else if (
+        property_type === 'any' &&
         price.min <= prop.price &&
         price.max >= prop.price &&
-        property_type === 'any' &&
-        beds >= prop.beds &&
-        baths >= prop.baths
+        beds <= prop.beds &&
+        baths <= prop.baths &&
+        size.sqft_max >= prop.lot_size.size &&
+        size.sqft_min <= prop.lot_size.size
       ) {
-        items.push(prop);
+        haveSize.push(prop);
+        merged.push(prop);
       } else if (
         property_type === prop.prop_type &&
         price.min <= prop.price &&
         price.max >= prop.price &&
-        beds >= prop.beds &&
-        baths >= prop.baths
+        beds <= prop.beds &&
+        baths <= prop.baths &&
+        size.sqft_max >= prop.lot_size.size &&
+        size.sqft_min <= prop.lot_size.size
       ) {
-        items.push(prop);
+        haveSize.push(prop);
+        merged.push(prop);
       }
     } // end loop
-
-    return items;
+    return merged;
   } // end start filter
 } // end stage

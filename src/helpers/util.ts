@@ -1,15 +1,9 @@
-import { CommonOptions } from 'child_process';
 import { TrackingParams } from '../types';
 import {
   FormattedDataRent,
   PropertiesRent,
   ResultRent,
 } from '../types/Rent.types';
-import {
-  FormattedDataSale,
-  PropertiesSale,
-  ResultSale,
-} from '../types/Sale.types';
 
 export const getAccordionActiveItem = (items: NodeListOf<Element>) => {
   const result = [];

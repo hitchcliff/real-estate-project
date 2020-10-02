@@ -93,7 +93,7 @@ const SaleGridDisplay: React.FC<IRentGridDisplayProp> = (props) => {
             <div>
               <h4>
                 {formatNumber(item.price)}
-                <span>/ mo</span>
+                {/* <span>/ mo</span> */}
               </h4>
             </div>
             <FontAwesomeIcon icon={faHeart} />

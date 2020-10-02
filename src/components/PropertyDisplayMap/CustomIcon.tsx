@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatNumber2 } from '../../helpers/util';
 import { MapAddress } from '../../types/Rent.types';
-import styles from './HomesDisplayMap.module.scss';
+import styles from './PropertyDisplayMap.module.scss';
 
 interface ICustomIconProp {
   items?: MapAddress;

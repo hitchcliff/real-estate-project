@@ -12,9 +12,12 @@ import { RootStore } from '../../Store';
 import { PropertiesAction } from '../../Actions/Properties.action';
 
 // helpers
-import { PropertiesSale, ResultSale } from '../../types/Sale.types';
+import { PropertiesSale } from '../../types/Sale.types';
 import { filterDataSale } from '../../helpers/sale/filterSale';
 import SalesDisplayHeader from '../SaleDisplayHeader/SalesDisplayHeader';
+import SaleListDisplay from '../SaleListDisplay/SaleListDisplay';
+import { getAddress2 } from '../../helpers/map.address';
+import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
 
 const ForSale = () => {
   const dispatch = useDispatch();
@@ -47,9 +50,8 @@ const ForSale = () => {
   }, [filters]);
 
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
-  // const address = getAddress2<PropertiesSale>(results); // format address for map
+  const address = getAddress2<PropertiesSale>(results); // format address for map
 
-  console.log(results);
   return (
     <div className={styles.container}>
       {/* Display Header */}
@@ -60,6 +62,21 @@ const ForSale = () => {
         <div className={styles.grid_container}>
           {/* Grid Display */}
           <SaleGridDisplay items={results} />
+        </div>
+      </div>
+
+      <div
+        className={
+          !view ? cx(styles.view, styles.list, 'list') : styles.default
+        }
+      >
+        <div className={styles.list_container}>
+          {/* List Display */}
+          <SaleListDisplay items={results} />
+          {/* Map Display */}
+          <div className="sticky">
+            <PropertyDisplayMap address={address} />
+          </div>
         </div>
       </div>
     </div>

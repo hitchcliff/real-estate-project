@@ -6,8 +6,8 @@ import cx from 'classnames';
 import HomesGridDisplay from '../HomesGridDisplay/HomesGridDisplay';
 import HomesDisplayHeader from '../HomesDisplayHeader/HomesDisplayHeader';
 import HomesListDisplay from '../HomesListDisplay/HomesListDisplay';
-import HomesDisplayMap from '../HomesDisplayMap/HomesDisplayMap';
 import Filter from '../Filter/Filter';
+import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
 
 // state
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,6 @@ import { filterData } from '../../helpers/rent/filterRent';
 import { rent_propertiesDataFormat } from '../../helpers/rent/rent_format_data';
 import { PropertiesRent } from '../../types/Rent.types';
 import { formatDataRent } from '../../helpers/util';
-import { Properties } from '../../types';
 
 const ForRent = () => {
   const dispatch = useDispatch();
@@ -83,7 +82,7 @@ const ForRent = () => {
           <HomesListDisplay items={new_items} />
           {/* Map Display */}
           <div className="sticky">
-            <HomesDisplayMap address={address} />
+            <PropertyDisplayMap address={address} />
           </div>
         </div>
       </div>

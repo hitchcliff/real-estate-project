@@ -37,10 +37,11 @@ export interface MapProperties extends PropertiesRent {
 
 // extending address
 export interface MapAddress extends Address {
-  photos: string;
+  photos?: string;
   price: number | null;
   lat: number;
   lon: number;
+  thumbnail?: string;
 }
 
 // photos

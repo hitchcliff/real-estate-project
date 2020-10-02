@@ -26,14 +26,16 @@ export const getAddress = <T>(
   return new_items;
 };
 
-export const getAddress2 = <T extends PropertiesSale>(items: Array<T>) => {
+export const getAddress2 = <T extends PropertiesSale>(
+  items: T[],
+): MapAddress[] | any => {
   const new_items = [];
   for (const item of items) {
     new_items.push({
       line: item.address.line,
       city: item.address.city,
       neighborhood_name: item.address.neighborhood_name,
-      photos: item.thumbnail,
+      thumbnail: item.thumbnail,
       price: item.price,
       lat: item.address.lat,
       lon: item.address.lon,
