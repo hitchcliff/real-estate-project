@@ -1,12 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import styles from './ToggleSelectionFaIcons.module.css';
 import React, { useState } from 'react';
+
+// icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 interface IToggleProp {
-  icons: IconDefinition[]; // fontawesome icon definition types
+  icons: IconDefinition[] | unknown; // fontawesome icon definition types
   callback: (target: string) => void;
 }
-const ToggleSelectionFaIcons: React.FC<IToggleProp> = (props) => {
+const ToggleSelectionFaIcons = (props: IToggleProp) => {
   const { icons, callback } = props;
   const [state, setState] = useState<string | undefined>(`1`); // set default
 
@@ -20,15 +22,18 @@ const ToggleSelectionFaIcons: React.FC<IToggleProp> = (props) => {
     callback(target); // return the callback
   };
 
-  const iconMapper = icons?.map((item, i) => (
-    <span
-      key={i}
-      className={state === i.toString() ? styles.active : i.toString()} // value used to toggle the state and data
-      onClick={(e) => handleClick(e, i)} // pass the index to check the current classname
-    >
-      <FontAwesomeIcon icon={item} />
-    </span>
-  ));
+  if (!Array.isArray(icons)) return <></>;
+  const iconMapper = icons?.map((item, i) => {
+    return (
+      <span
+        key={i}
+        className={state === i.toString() ? styles.active : i.toString()} // value used to toggle the state and data
+        onClick={(e) => handleClick(e, i)} // pass the index to check the current classname
+      >
+        <FontAwesomeIcon icon={item} />
+      </span>
+    );
+  });
 
   return <div className={styles.container}>{iconMapper}</div>;
 };

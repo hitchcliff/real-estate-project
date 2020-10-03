@@ -1,9 +1,5 @@
 import { TrackingParams } from '../types';
-import {
-  FormattedDataRent,
-  PropertiesRent,
-  ResultRent,
-} from '../types/Rent.types';
+import { FormattedDataRent, PropertiesRent, ResultRent } from '../types/Rent.types';
 
 export const getAccordionActiveItem = (items: NodeListOf<Element>) => {
   const result = [];
@@ -98,7 +94,7 @@ export const propStatus = (status: string) => {
   return 'For Sale';
 };
 
-// format number est
+// format number est per month
 export const formatNumberEstPerMonth = <T>(value: T): string => {
   if (typeof value === 'string') {
     const parsed = parseInt(value, 10) / 12;
@@ -107,4 +103,21 @@ export const formatNumberEstPerMonth = <T>(value: T): string => {
     return formatNumber2(value / 12);
   }
   return 'No price';
+};
+
+// set item in local storage
+export const setItemLocalStorage = <T, T2>(item: T, property_id: T2): void => {
+  const parseString = JSON.stringify(item);
+  if (typeof property_id === 'number') {
+    const parsedID = property_id.toString();
+    localStorage.setItem('Property ' + parsedID, parseString);
+  } else if (typeof property_id === 'string') {
+    localStorage.setItem('Property ' + property_id, parseString);
+  } else {
+    console.log('error saving... Property: ', property_id);
+  }
+};
+export const removeItemLocalStorate = <K>(key: K): void => {
+  if (typeof key !== 'string') return;
+  localStorage.removeItem('Property ' + key);
 };

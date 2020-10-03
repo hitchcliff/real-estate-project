@@ -44,7 +44,6 @@ const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
 
   // marker
   const mapMarker = address.map((item: MapAddress, index) => {
-    console.log(item);
     return (
       <Marker
         key={index}
@@ -62,10 +61,7 @@ const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
             {types === 'sold' && typeof types !== 'undefined' ? (
               <img src={item.sold_photos} alt={item.line} />
             ) : (
-              <img
-                src={item.photos ? item.photos : item.thumbnail}
-                alt={item.line}
-              />
+              <img src={item.photos ? item.photos : item.thumbnail} alt={item.line} />
             )}
           </div>
         </Popup>

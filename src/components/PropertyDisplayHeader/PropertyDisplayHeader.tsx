@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './PropertyDisplayHeader.module.scss';
-import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 interface IPropertyDisplayHeader<T, T2> {
   tracker: T | unknown;
   prop_type: T2;

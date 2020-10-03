@@ -9,23 +9,18 @@ import {
   faBuilding,
   faBath,
 } from '@fortawesome/free-solid-svg-icons';
-import saved from '@fortawesome/free-solid-svg-icons/faHeart';
-
-// regular
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import Pagination from '../Pagination/Pagination';
 import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
+import PropertySave from '../PropertySave/PropertySave';
 
 interface IRentGridDisplayProp<T, Images> {
   items?: T[];
   images?: Images;
 }
 // tslint:disable-next-line: typedef
-const PropertyGridDisplay = <T, Images>(
-  props: IRentGridDisplayProp<T, Images>,
-) => {
+const PropertyGridDisplay = <T, Images>(props: IRentGridDisplayProp<T, Images>) => {
   const { items } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
@@ -121,7 +116,8 @@ const PropertyGridDisplay = <T, Images>(
                 </h4>
               )}
             </div>
-            <FontAwesomeIcon icon={faHeart} />
+            {/* save property*/}
+            <PropertySave<T, T> item={item} id={item.property_id} />
           </div>
         </div>
       </div>

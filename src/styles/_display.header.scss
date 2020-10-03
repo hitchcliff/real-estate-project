@@ -4,11 +4,11 @@
   flex-direction: row;
   align-items: center;
   padding: 20px 0px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   .body {
-    text-align: right;
+    text-align: left;
     span {
-      text-align: right;
+      text-align: left;
     }
   }
 }
