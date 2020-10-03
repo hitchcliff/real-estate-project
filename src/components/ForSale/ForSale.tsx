@@ -3,7 +3,10 @@ import styles from './ForSale.module.scss';
 import cx from 'classnames';
 
 // components
-import SaleGridDisplay from '../SaleGridDisplay/SaleGridDisplay';
+import PropertyDisplayHeader from '../PropertyDisplayHeader/PropertyDisplayHeader';
+import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
+import PropertyListDisplay from '../PropertyListDisplay/PropertyListDisplay';
+import PropertyGridDisplay from '../PropertyGridDisplay/PropertyGridDisplay';
 import Filter from '../Filter/Filter';
 
 // state
@@ -14,10 +17,10 @@ import { PropertiesAction } from '../../Actions/Properties.action';
 // helpers
 import { PropertiesSale } from '../../types/Sale.types';
 import { filterDataSale } from '../../helpers/sale/filterSale';
-import SalesDisplayHeader from '../SaleDisplayHeader/SalesDisplayHeader';
-import SaleListDisplay from '../SaleListDisplay/SaleListDisplay';
 import { getAddress2 } from '../../helpers/map.address';
-import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
+
+// types
+import { TrackingParams } from '../../types';
 
 const ForSale = () => {
   const dispatch = useDispatch();
@@ -55,13 +58,16 @@ const ForSale = () => {
   return (
     <div className={styles.container}>
       {/* Display Header */}
-      <SalesDisplayHeader tracker={data?.meta.tracking_params} />
+      <PropertyDisplayHeader<TrackingParams, string>
+        prop_type="For Sale"
+        tracker={data?.meta.tracking_params}
+      />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
         <Filter filter={data?.tracking_params} />
         <div className={styles.grid_container}>
           {/* Grid Display */}
-          <SaleGridDisplay items={results} />
+          <PropertyGridDisplay<PropertiesSale, string> items={results} />
         </div>
       </div>
 
@@ -72,7 +78,7 @@ const ForSale = () => {
       >
         <div className={styles.list_container}>
           {/* List Display */}
-          <SaleListDisplay items={results} />
+          <PropertyListDisplay<PropertiesSale> items={results} />
           {/* Map Display */}
           <div className="sticky">
             <PropertyDisplayMap address={address} />

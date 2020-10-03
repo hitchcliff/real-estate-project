@@ -15,7 +15,7 @@ import saved from '@fortawesome/free-solid-svg-icons/faHeart';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import Pagination from '../Pagination/Pagination';
-import { formatNumber } from '../../helpers/util';
+import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
 
 interface IRentGridDisplayProp<T, Images> {
@@ -53,7 +53,7 @@ const PropertyGridDisplay = <T, Images>(
               <li>
                 {' '}
                 <FontAwesomeIcon icon={faArrowsAltH} />{' '}
-                {item.lot_size ? item.lot_size.size : 'TBA'} sqft.{' '}
+                {item.lot_size ? item.lot_size.size : 'N/A'} sqft.{' '}
               </li>
               <li>
                 {' '}
@@ -64,7 +64,7 @@ const PropertyGridDisplay = <T, Images>(
               <li>
                 {' '}
                 <FontAwesomeIcon icon={faBuilding} />{' '}
-                {item.building_size ? item.building_size.size : 'TBA'} sqft.{' '}
+                {item.building_size ? item.building_size.size : 'N/A'} sqft.{' '}
               </li>
               <li>
                 {' '}
@@ -82,7 +82,7 @@ const PropertyGridDisplay = <T, Images>(
         <div className={styles.home_showcase}>
           {/* Image */}
           <div className={styles.showcase_image}>
-            {item.photos.length ? (
+            {item.photos ? (
               <PropertyDisplayCarousel<Images>
                 images={item.photos}
                 alt={item.address.line}
@@ -93,9 +93,9 @@ const PropertyGridDisplay = <T, Images>(
             )}
           </div>
           <div className={styles.showcase_header}>
-            {item.client_display_flags.is_new_listing ? (
+            {item.client_display_flags.is_new_listing && (
               <span className={styles.tag}>New</span>
-            ) : null}
+            )}
             <p>
               {item.address.neighborhood_name} {item.address.line}
             </p>
@@ -104,7 +104,12 @@ const PropertyGridDisplay = <T, Images>(
             <div>
               <h4>
                 {formatNumber(item.price)}
-                {/* <span>/ mo</span> */}
+                {/* check if its for_rent */}
+                {item.prop_status !== 'for_rent' && (
+                  <span className={styles.est}>
+                    Est. {formatNumberEstPerMonth(item.price)}/mo
+                  </span>
+                )}
               </h4>
             </div>
             <FontAwesomeIcon icon={faHeart} />

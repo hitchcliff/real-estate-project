@@ -31,6 +31,10 @@ export interface PropertiesSale {
   client_display_flags: ClientDisplayFlags; // index
 }
 
+export interface SalePhotos {
+  thumbnail: string;
+}
+
 interface LotSize {
   size: number;
 }

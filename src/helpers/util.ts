@@ -91,7 +91,20 @@ export const formatNumber2 = (num: number) => {
   return '$' + num;
 };
 
+// get prop-status
 export const propStatus = (status: string) => {
   if (status === 'for_rent') return 'For Rent';
+  else if (status === 'not_for_sale') return 'Sold';
   return 'For Sale';
+};
+
+// format number est
+export const formatNumberEstPerMonth = <T>(value: T): string => {
+  if (typeof value === 'string') {
+    const parsed = parseInt(value, 10) / 12;
+    return formatNumber2(parsed);
+  } else if (typeof value === 'number') {
+    return formatNumber2(value / 12);
+  }
+  return 'No price';
 };
