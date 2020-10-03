@@ -23,6 +23,7 @@ import { formatDataRent } from '../../helpers/util';
 // types
 import { PropertiesRent, RentPhotos } from '../../types/Rent.types';
 import { TrackingParams } from '../../types';
+import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 
 const ForRent = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const ForRent = () => {
 
   return (
     <div className={styles.container}>
+      <HomesViewSelection />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
         <Filter filter={new_data?.tracking_params} />

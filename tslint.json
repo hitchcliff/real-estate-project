@@ -16,7 +16,7 @@
     "interface-name": false,
     "interface-over-type-literal": true,
     "label-position": true,
-    "max-line-length": [true, 200],
+    "max-line-length": [true, 300],
     "member-access": false,
     "array-type": false,
     "member-ordering": [

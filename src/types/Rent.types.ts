@@ -42,6 +42,7 @@ export interface MapAddress extends Address {
   lat: number;
   lon: number;
   thumbnail?: string;
+  sold_photos?: string;
 }
 
 // photos

@@ -21,6 +21,7 @@ import { PropertiesFilterData } from '../../helpers/properties/properties.filter
 // types
 import { TrackingParams } from '../../types';
 import { getPropertyAddress } from '../../helpers/map.address';
+import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 
 const ForSold = () => {
   const dispatch = useDispatch();
@@ -57,15 +58,16 @@ const ForSold = () => {
 
   return (
     <div className={styles.container}>
-      {/* Display Header */}
-      <PropertyDisplayHeader<TrackingParams, string>
-        prop_type="not for Sale"
-        tracker={data?.meta.tracking_params}
-      />
+      <HomesViewSelection />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
         <Filter filter={data?.tracking_params} />
         <div className={styles.grid_container}>
+          {/* Display Header */}
+          <PropertyDisplayHeader<TrackingParams, string>
+            prop_type="not for Sale"
+            tracker={data?.meta.tracking_params}
+          />
           {/* Grid Display */}
           <PropertyGridDisplay<PropertiesSold, SoldPhotos> items={results} />
         </div>
@@ -75,12 +77,17 @@ const ForSold = () => {
           !view ? cx(styles.view, styles.list, 'list') : styles.default
         }
       >
+        {/* Display Header */}
+        <PropertyDisplayHeader<TrackingParams, string>
+          prop_type="not for Sale"
+          tracker={data?.meta.tracking_params}
+        />
         <div className={styles.list_container}>
           {/* List Display */}
           <PropertyListDisplay<PropertiesSold> items={results} />
           {/* Map Display */}
           <div className="sticky">
-            <PropertyDisplayMap address={address} />
+            <PropertyDisplayMap<string> types="sold" address={address} />
           </div>
         </div>
       </div>

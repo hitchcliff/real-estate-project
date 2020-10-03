@@ -1,8 +1,8 @@
 .active {
-    background:  #9CE89A !important; /*color*/
+  background: #9ce89a !important; /*color*/
 }
 
 .active span {
-    color: white !important;
-    opacity: 1 !important;
+  color: white !important;
+  opacity: 1 !important;
 }

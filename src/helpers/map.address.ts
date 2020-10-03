@@ -25,6 +25,7 @@ export const getPropertyAddress = <T>(items: T[] | unknown): MapAddress[] => {
   if (!Array.isArray(items)) return addresses;
 
   for (const item of items) {
+    console.log(item);
     addresses.push({
       line: item.address ? item.address.line : 'No address',
       city: item.address.city,
@@ -33,6 +34,7 @@ export const getPropertyAddress = <T>(items: T[] | unknown): MapAddress[] => {
       price: item.price,
       lat: item.address.lat,
       lon: item.address.lon,
+      sold_photos: item.photos[0].href,
     });
   }
 

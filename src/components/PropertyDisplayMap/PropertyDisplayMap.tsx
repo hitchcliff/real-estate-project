@@ -11,15 +11,20 @@ import NYC from '../../geojson/nyc.json';
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 import { DivIcon } from 'leaflet';
 import CustomIcon from './CustomIcon';
+
+// helpers
 import { formatNumber } from '../../helpers/util';
+
+// types
 import { MapAddress } from '../../types/Rent.types';
 
-interface IPropertyDisplayMapProp {
+interface IPropertyDisplayMapProp<T> {
   address: MapAddress[];
+  types?: T | any;
 }
 
-const PropertyDisplayMap: React.FC<IPropertyDisplayMapProp> = (prop) => {
-  const { address } = prop;
+const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
+  const { address, types } = prop;
   const { features }: any = NYC;
   const tile = `https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=${process.env.REACT_APP_MAP_KEY}`;
 
@@ -38,28 +43,35 @@ const PropertyDisplayMap: React.FC<IPropertyDisplayMapProp> = (prop) => {
   };
 
   // marker
-  const mapMarker = address.map((item, index) => (
-    <Marker
-      key={index}
-      position={[item.lat, item.lon]}
-      icon={customMarkerDivIcon(item)}
-    >
-      <Popup className={styles.popup}>
-        <div className={styles.details}>
-          <h4>
-            {item.line}, {item.neighborhood_name}, {item.city}
-          </h4>
-          <span>{item.price ? formatNumber(item.price) : item.price}</span>
-        </div>
-        <div className={styles.image}>
-          <img
-            src={item.photos ? item.photos : item.thumbnail}
-            alt={item.photos}
-          />
-        </div>
-      </Popup>
-    </Marker>
-  ));
+  const mapMarker = address.map((item: MapAddress, index) => {
+    console.log(item);
+    return (
+      <Marker
+        key={index}
+        position={[item.lat ? item.lat : 0, item.lon ? item.lon : 0]}
+        icon={customMarkerDivIcon(item)}
+      >
+        <Popup className={styles.popup}>
+          <div className={styles.details}>
+            <h4>
+              {item.line}, {item.neighborhood_name}, {item.city}
+            </h4>
+            <span>{item.price ? formatNumber(item.price) : item.price}</span>
+          </div>
+          <div className={styles.image}>
+            {types === 'sold' && typeof types !== 'undefined' ? (
+              <img src={item.sold_photos} alt={item.line} />
+            ) : (
+              <img
+                src={item.photos ? item.photos : item.thumbnail}
+                alt={item.line}
+              />
+            )}
+          </div>
+        </Popup>
+      </Marker>
+    );
+  });
 
   const style = {
     weight: 3,

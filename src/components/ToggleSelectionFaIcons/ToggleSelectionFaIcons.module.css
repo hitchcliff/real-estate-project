@@ -1,15 +1,21 @@
 .container {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr;
+  /* display: grid; */
+  grid-gap: 10px;
+  /* grid-template-columns: 1fr 1fr; */
+  position: absolute;
+  left: 25%;
+  top: 40px;
+  z-index: 326235;
+  transform: translateX(25%);
 }
 span {
-    cursor: pointer;
+  cursor: pointer;
+  margin-right: 5px;
 }
 span svg {
-    color: #333;
-    opacity: .3;
-} 
+  color: #333;
+  opacity: 0.3;
+}
 span.active svg {
-    opacity: 1;
+  opacity: 1;
 }
