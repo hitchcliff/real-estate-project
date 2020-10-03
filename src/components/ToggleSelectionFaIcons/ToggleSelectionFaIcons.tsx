@@ -8,7 +8,8 @@ interface IToggleProp {
 }
 const ToggleSelectionFaIcons: React.FC<IToggleProp> = (props) => {
   const { icons, callback } = props;
-  const [state, setState] = useState<string | undefined>('1'); // set default
+  const [state, setState] = useState<string | undefined>(`1`); // set default
+
   const handleClick = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     i: number,
@@ -18,6 +19,7 @@ const ToggleSelectionFaIcons: React.FC<IToggleProp> = (props) => {
     setState(target); // set the target to current classname
     callback(target); // return the callback
   };
+
   const iconMapper = icons?.map((item, i) => (
     <span
       key={i}

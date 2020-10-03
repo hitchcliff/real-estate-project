@@ -102,15 +102,24 @@ const PropertyGridDisplay = <T, Images>(
           </div>
           <div className={styles.showcase_footer}>
             <div>
-              <h4>
-                {formatNumber(item.price)}
-                {/* check if its for_rent */}
-                {item.prop_status !== 'for_rent' && (
-                  <span className={styles.est}>
-                    Est. {formatNumberEstPerMonth(item.price)}/mo
-                  </span>
-                )}
-              </h4>
+              {/* check if its for_rent */}
+              {item.prop_type !== 'for_rent' ? (
+                <h4>
+                  {formatNumber(item.price)}
+                  {/* check if its for_rent */}
+                  {item.prop_status !== 'for_rent' && (
+                    <span className={styles.est}>
+                      Est. {formatNumberEstPerMonth(item.price)}/mo
+                    </span>
+                  )}
+                </h4>
+              ) : (
+                <h4>
+                  {formatNumber(item.community.price_min)} -{' '}
+                  {formatNumber(item.community.price_max)}
+                  <span>/ mo</span>
+                </h4>
+              )}
             </div>
             <FontAwesomeIcon icon={faHeart} />
           </div>

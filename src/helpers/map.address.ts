@@ -1,11 +1,4 @@
-import { extname } from 'path';
-import { Properties } from '../types';
-import {
-  MapAddress,
-  MapAndProperty,
-  PropertiesRent,
-} from '../types/Rent.types';
-import { PropertiesSale, ResultSale } from '../types/Sale.types';
+import { MapAddress, MapAndProperty } from '../types/Rent.types';
 
 export const getAddress = <T>(
   items: MapAndProperty[] | T,
@@ -26,13 +19,14 @@ export const getAddress = <T>(
   return new_items;
 };
 
-export const getAddress2 = <T extends PropertiesSale>(
-  items: T[],
-): MapAddress[] | any => {
-  const new_items = [];
+export const getPropertyAddress = <T>(items: T[] | unknown): MapAddress[] => {
+  const addresses: MapAddress[] = [];
+
+  if (!Array.isArray(items)) return addresses;
+
   for (const item of items) {
-    new_items.push({
-      line: item.address.line,
+    addresses.push({
+      line: item.address ? item.address.line : 'No address',
       city: item.address.city,
       neighborhood_name: item.address.neighborhood_name,
       thumbnail: item.thumbnail,
@@ -41,5 +35,6 @@ export const getAddress2 = <T extends PropertiesSale>(
       lon: item.address.lon,
     });
   }
-  return new_items;
+
+  return addresses;
 };

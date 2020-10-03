@@ -4,10 +4,10 @@ import cx from 'classnames';
 
 // components
 import HomesGridDisplay from '../HomesGridDisplay/HomesGridDisplay';
-import HomesDisplayHeader from '../HomesDisplayHeader/HomesDisplayHeader';
 import HomesListDisplay from '../HomesListDisplay/HomesListDisplay';
 import Filter from '../Filter/Filter';
 import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
+import PropertyDisplayHeader from '../PropertyDisplayHeader/PropertyDisplayHeader';
 
 // state
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,11 +18,16 @@ import { PropertiesAction } from '../../Actions/Properties.action';
 import { getAddress } from '../../helpers/map.address';
 import { filterData } from '../../helpers/rent/filterRent';
 import { rent_propertiesDataFormat } from '../../helpers/rent/rent_format_data';
-import { PropertiesRent } from '../../types/Rent.types';
 import { formatDataRent } from '../../helpers/util';
+
+// types
+import { PropertiesRent, RentPhotos } from '../../types/Rent.types';
+import { TrackingParams } from '../../types';
 
 const ForRent = () => {
   const dispatch = useDispatch();
+  // view
+  const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
 
   // current data from api [1]
   const { loading, data } = useSelector((state: RootStore) => state.properties);
@@ -55,19 +60,20 @@ const ForRent = () => {
     setResults(finalResults);
   }, [filters]);
 
-  const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
   const new_items = rent_propertiesDataFormat(results); // format data for homes
-  const address = getAddress(results); // format address for map
-  console.log(address);
+  const address = getAddress<PropertiesRent>(results); // format address for map
 
   return (
     <div className={styles.container}>
-      {/* Display Header */}
-      <HomesDisplayHeader tracker={new_data?.tracking_params} />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
         <Filter filter={new_data?.tracking_params} />
         <div className={styles.grid_container}>
+          {/* Display Header */}
+          <PropertyDisplayHeader<TrackingParams, string>
+            prop_type="for Rent"
+            tracker={data?.meta.tracking_params}
+          />
           {/* Grid Display */}
           <HomesGridDisplay items={new_items} />
         </div>
@@ -77,6 +83,11 @@ const ForRent = () => {
           !view ? cx(styles.view, styles.list, 'list') : styles.default
         }
       >
+        {/* Display Header */}
+        <PropertyDisplayHeader<TrackingParams, string>
+          prop_type="for Rent"
+          tracker={data?.meta.tracking_params}
+        />
         <div className={styles.list_container}>
           {/* List Display */}
           <HomesListDisplay items={new_items} />

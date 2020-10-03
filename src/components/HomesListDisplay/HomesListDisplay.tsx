@@ -52,8 +52,8 @@ const HomesListDisplay: React.FC<IHomesListDisplayProp> = (prop) => {
             </span>
           </div>
           <div className={styles.details_price}>
-            <h2>{formatNumber(item.community.price_min)}</h2>
-            <span>{formatNumber(item.community.price_max)}</span>
+            <h2>{formatNumber(item.community.price_max)}</h2>
+            <span>{formatNumber(item.community.price_min)}</span>
             {/* <span className={styles.est}>Est. $1k/mo</span> */}
           </div>
         </div>

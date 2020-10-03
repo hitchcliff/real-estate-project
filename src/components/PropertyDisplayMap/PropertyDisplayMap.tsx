@@ -14,11 +14,11 @@ import CustomIcon from './CustomIcon';
 import { formatNumber } from '../../helpers/util';
 import { MapAddress } from '../../types/Rent.types';
 
-interface IHomesDisplayMapProp {
+interface IPropertyDisplayMapProp {
   address: MapAddress[];
 }
 
-const PropertyDisplayMap: React.FC<IHomesDisplayMapProp> = (prop) => {
+const PropertyDisplayMap: React.FC<IPropertyDisplayMapProp> = (prop) => {
   const { address } = prop;
   const { features }: any = NYC;
   const tile = `https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=${process.env.REACT_APP_MAP_KEY}`;

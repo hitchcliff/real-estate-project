@@ -20,6 +20,7 @@ import { PropertiesFilterData } from '../../helpers/properties/properties.filter
 
 // types
 import { TrackingParams } from '../../types';
+import { getPropertyAddress } from '../../helpers/map.address';
 
 const ForSold = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const ForSold = () => {
   }, [filters]);
 
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
-  // const address = getAddress2<PropertiesSale>(results); // format address for map
+  const address = getPropertyAddress<PropertiesSold>(results); // format address for map
 
   return (
     <div className={styles.container}>
@@ -79,7 +80,7 @@ const ForSold = () => {
           <PropertyListDisplay<PropertiesSold> items={results} />
           {/* Map Display */}
           <div className="sticky">
-            {/* <PropertyDisplayMap address={address} /> */}
+            <PropertyDisplayMap address={address} />
           </div>
         </div>
       </div>

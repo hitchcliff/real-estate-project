@@ -45,5 +45,5 @@ export interface MapAddress extends Address {
 }
 
 // photos
-export type Photos = [];
+export type RentPhotos = [];
 export type MapAndProperty = PropertiesRent | MapProperties; // export

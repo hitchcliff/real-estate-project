@@ -17,7 +17,7 @@ import { PropertiesAction } from '../../Actions/Properties.action';
 // helpers
 import { PropertiesSale } from '../../types/Sale.types';
 import { filterDataSale } from '../../helpers/sale/filterSale';
-import { getAddress2 } from '../../helpers/map.address';
+import { getPropertyAddress } from '../../helpers/map.address';
 
 // types
 import { TrackingParams } from '../../types';
@@ -53,7 +53,7 @@ const ForSale = () => {
   }, [filters]);
 
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
-  const address = getAddress2<PropertiesSale>(results); // format address for map
+  const address = getPropertyAddress<PropertiesSale>(results); // format address for map
 
   return (
     <div className={styles.container}>
