@@ -1,3 +1,4 @@
+import { idText } from 'typescript';
 import { TrackingParams } from '../types';
 import { FormattedDataRent, PropertiesRent, ResultRent } from '../types/Rent.types';
 
@@ -111,13 +112,35 @@ export const setItemLocalStorage = <T, T2>(item: T, property_id: T2): void => {
   if (typeof property_id === 'number') {
     const parsedID = property_id.toString();
     localStorage.setItem('Property ' + parsedID, parseString);
+
+    // save a state
+    setSavedStateLocalStorage(parsedID);
   } else if (typeof property_id === 'string') {
     localStorage.setItem('Property ' + property_id, parseString);
+
+    // state a state
+    setSavedStateLocalStorage(property_id);
   } else {
     console.log('error saving... Property: ', property_id);
   }
 };
-export const removeItemLocalStorate = <K>(key: K): void => {
+
+// remove item in local storage
+export const removeItemLocalStorage = <K>(key: K): void => {
   if (typeof key !== 'string') return;
   localStorage.removeItem('Property ' + key);
+
+  // remove the state which id contains
+  localStorage.removeItem('State ' + key);
+};
+
+// save the state
+export const setSavedStateLocalStorage = (id: string) => {
+  localStorage.setItem('State ' + id, id);
+};
+
+// ge the state
+export const getSavedStateLocalStorage = <T>(id: T) => {
+  if (typeof id !== 'string') return;
+  return localStorage.getItem('State ' + id);
 };
