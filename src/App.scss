@@ -16,6 +16,10 @@ body {
   outline: none;
 }
 
+#page-container {
+  background-color: $ghost_white;
+}
+
 // input and buttons
 input:focus,
 button:focus {

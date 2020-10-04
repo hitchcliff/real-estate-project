@@ -18,8 +18,7 @@ export default class PropertiesStaging<TypeOfItem> {
     const { baths, beds, listing, price, property_type, size } = this.filters;
 
     // check if we have these data
-    if (!baths || !beds || !listing || !price || !property_type || !size)
-      return;
+    if (!baths || !beds || !listing || !price || !property_type || !size) return;
     if (!price.min || !price.max) return; // check if min and max price existed
     if (!size.sqft_min && !size.sqft_max) return;
 

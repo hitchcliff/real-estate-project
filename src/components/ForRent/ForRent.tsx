@@ -16,7 +16,7 @@ import { PropertiesAction } from '../../Actions/Properties.action';
 
 // helpers
 import { getAddress } from '../../helpers/map.address';
-import { filterData } from '../../helpers/rent/filterRent';
+import { filterData, filterTimeOut } from '../../helpers/rent/filterRent';
 import { rent_propertiesDataFormat } from '../../helpers/rent/rent_format_data';
 import { formatDataRent } from '../../helpers/util';
 
@@ -54,17 +54,20 @@ const ForRent = () => {
 
   // filter the data [3]
   useEffect(() => {
-    if (!new_data) return;
-    const finalResults = filterData(new_data, filters);
+    const timer = setTimeout(() => {
+      if (!new_data) return;
+      const finalResults = filterData(new_data, filters);
 
-    if (!finalResults) return;
-    console.log(finalResults);
-    setResults(finalResults);
+      if (!finalResults) return;
+      setResults(finalResults);
+    }, filterTimeOut);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [filters]);
 
   const new_items = rent_propertiesDataFormat(results); // format data for homes
   const address = getAddress<PropertiesRent>(results); // format address for map
-  console.log(filters);
 
   return (
     <div className={styles.container}>

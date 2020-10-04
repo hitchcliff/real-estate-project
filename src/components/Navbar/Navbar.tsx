@@ -25,13 +25,13 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
         <li>
-          <Link to="/property/sale">Sale</Link>
+          <Link to="/sale">Sale</Link>
         </li>
         <li>
-          <Link to="/property/rent">Rent</Link>
+          <Link to="/rent">Rent</Link>
         </li>
         <li>
-          <Link to="/property/sold">Sold</Link>
+          <Link to="/sold">Sold</Link>
         </li>
       </ul>
       <div className={styles.auth}>
