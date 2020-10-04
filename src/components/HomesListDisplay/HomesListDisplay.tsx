@@ -9,6 +9,8 @@ import { formatNumber, propStatus } from '../../helpers/util';
 import Pagination from '../Pagination/Pagination';
 import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel';
 import { PropertiesRent } from '../../types/Rent.types';
+import { Link } from 'react-router-dom';
+import PropertySave from '../PropertySave/PropertySave';
 
 interface IHomesListDisplayProp {
   items?: PropertiesRent[];
@@ -63,16 +65,14 @@ const HomesListDisplay: React.FC<IHomesListDisplayProp> = (prop) => {
             <h4>Details: </h4>
             <p>
               {' '}
-              {item.community.sqft_min} sqft. - {item.community.sqft_max} sqft.
-              Lot size
+              {item.community.sqft_min} sqft. - {item.community.sqft_max} sqft. Lot size
             </p>
           </div>
           <div className={styles.details_address}>
             <h4>Address: </h4>
             <p>
               {' '}
-              {item.address.neighborhood_name &&
-                item.address.neighborhood_name + ', '}
+              {item.address.neighborhood_name && item.address.neighborhood_name + ', '}
               {item.address.line}
             </p>
           </div>
@@ -90,13 +90,11 @@ const HomesListDisplay: React.FC<IHomesListDisplayProp> = (prop) => {
             </div>
             <div>
               <button className={styles.primary}>
-                <a href="!#">Contact</a>
+                <Link to={`/rent/${item.property_id}`}>View details</Link>
               </button>
             </div>
             {/* save */}
-            <div>
-              <FontAwesomeIcon icon={faHeart} />
-            </div>
+            <PropertySave<PropertiesRent, any> item={item} id={item.property_id} />
           </div>
         </div>
       </div>

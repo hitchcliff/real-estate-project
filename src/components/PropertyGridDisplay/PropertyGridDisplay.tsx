@@ -14,6 +14,7 @@ import Pagination from '../Pagination/Pagination';
 import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
 import PropertySave from '../PropertySave/PropertySave';
+import { Link } from 'react-router-dom';
 
 interface IRentGridDisplayProp<T, Images> {
   items?: T[];
@@ -69,7 +70,7 @@ const PropertyGridDisplay = <T, Images>(props: IRentGridDisplayProp<T, Images>) 
           </div>
           <div className={styles.home_button}>
             <button className="primary-button">
-              <a href="!#">View details</a>
+              <Link to={`/property/${item.property_id}`}>View details</Link>
             </button>
           </div>
         </div>

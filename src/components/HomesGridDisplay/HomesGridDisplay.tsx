@@ -17,6 +17,8 @@ import HomesDisplayCarousel from '../HomesDisplayCarousel/HomesDisplayCarousel';
 import Pagination from '../Pagination/Pagination';
 import { formatNumber } from '../../helpers/util';
 import { PropertiesRent } from '../../types/Rent.types';
+import PropertySave from '../PropertySave/PropertySave';
+import { Link } from 'react-router-dom';
 
 interface IHomesGridDisplayProp {
   items?: PropertiesRent[];
@@ -67,7 +69,7 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
         </div>
         <div className={styles.home_button}>
           <button className="primary-button">
-            <a href="!#">View details</a>
+            <Link to={`/rent/${item.property_id}`}>View details</Link>
           </button>
         </div>
       </div>
@@ -97,7 +99,7 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
               <span>/ mo</span>
             </h4>
           </div>
-          <FontAwesomeIcon icon={faHeart} />
+          <PropertySave<PropertiesRent, any> item={item} id={item.property_id} />
         </div>
       </div>
     </div>

@@ -7,6 +7,8 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { formatNumber, formatNumberEstPerMonth, propStatus } from '../../helpers/util';
 
 import Pagination from '../Pagination/Pagination';
+import { Link } from 'react-router-dom';
+import PropertySave from '../PropertySave/PropertySave';
 
 interface IHomesListDisplayProp<T> {
   items?: T[];
@@ -103,13 +105,11 @@ const PropertyListDisplay = <T,>(prop: IHomesListDisplayProp<T>) => {
               </div>
               <div>
                 <button className={styles.primary}>
-                  <a href="!#">Contact</a>
+                  <Link to={`/property/${item.property_id}`}>Contact</Link>
                 </button>
               </div>
               {/* save */}
-              <div>
-                <FontAwesomeIcon icon={faHeart} />
-              </div>
+              <PropertySave<T, T> item={item} id={item.id} />
             </div>
           </div>
         </div>
