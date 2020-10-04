@@ -14,7 +14,7 @@ const SortByBaths = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [value]);
+  }, [value, dispatch]);
 
   const handleToggleSelection = (e: string) => {
     const targetValue = parseStrToNum(e);
@@ -23,11 +23,7 @@ const SortByBaths = () => {
   return (
     <div className={styles.baths}>
       <h4>Sort by baths</h4>
-      <ToggleSelectionNumbers
-        min={1}
-        max={5}
-        callback={handleToggleSelection}
-      />
+      <ToggleSelectionNumbers min={1} max={5} callback={handleToggleSelection} />
     </div>
   );
 };

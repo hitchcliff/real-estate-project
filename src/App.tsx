@@ -11,7 +11,7 @@ const App = (): ReactElement => {
         <div id="page-container">
           <Switch>
             <Route exact={true} path="/" component={Homepage} />
-            <Route path="/homes" component={RealEstate} />
+            <Route path="/property" component={RealEstate} />
           </Switch>
         </div>
       </Router>

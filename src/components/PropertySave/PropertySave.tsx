@@ -43,7 +43,7 @@ const PropertySave = <T, K extends T>({ item, id }: IPropertySave<T, K>) => {
     } else {
       setLocalStorage('');
     }
-  }, [state]);
+  }, [state, item, id]);
 
   // get the local state on load
   useEffect(() => {
@@ -56,9 +56,8 @@ const PropertySave = <T, K extends T>({ item, id }: IPropertySave<T, K>) => {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [item, id]);
   if (typeof id !== 'string') return <></>;
-  console.log('id ' + id, 'local state ' + localStorage);
 
   return (
     <div className={styles.container}>

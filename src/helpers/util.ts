@@ -1,4 +1,3 @@
-import { idText } from 'typescript';
 import { TrackingParams } from '../types';
 import { FormattedDataRent, PropertiesRent, ResultRent } from '../types/Rent.types';
 

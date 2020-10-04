@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { SortByPrice_action } from '../../Actions/Filters.action';
-import { filterTimeOut, parseStrToNum } from '../../helpers/rent/filterRent';
+import { filterTimeOut } from '../../helpers/rent/filterRent';
 import { Price } from '../../types/Filters.types';
 import styles from './SortByPrice.module.scss';
 const SortByPrice = () => {
@@ -19,7 +19,7 @@ const SortByPrice = () => {
     return () => {
       clearTimeout(timer); // clean the timer in 1s if there's new price
     };
-  }, [price]); //  run this once we have a state
+  }, [price, dispatch]); //  run this once we have a state
 
   // handle setting min price
   const handleSetMinPrice = (e: number) => {

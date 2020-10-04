@@ -19,24 +19,15 @@ export default class StageRent {
     const { baths, beds, listing, price, property_type, size } = this.filters;
 
     // check if we have these data
-    if (!baths || !beds || !listing || !price || !property_type || !size)
-      return;
-    if (!price.min || !price.max) return; // check if min and max price existed
+    if (!baths || !beds || !listing || !price || !property_type || !size) return;
+    if (!price.min || !price.max || price.min === NaN || price.max === NaN) return; // check if min and max price existed
 
     // loop to all items we passed
     const items: PropertiesRent[] = []; // all filtered items
     for (const prop of this.items) {
       const {
         prop_type,
-        community: {
-          baths_max,
-          beds_max,
-          price_max,
-          price_min,
-          sqft_max,
-          sqft_min,
-        },
-        client_display_flags: { is_new_listing },
+        community: { baths_max, beds_max, price_max, price_min, sqft_max, sqft_min },
       } = prop;
 
       if (

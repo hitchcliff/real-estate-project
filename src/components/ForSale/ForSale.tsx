@@ -27,7 +27,7 @@ const ForSale = () => {
   const dispatch = useDispatch();
 
   // current data from api [1]
-  const { loading, data } = useSelector((state: RootStore) => state.properties);
+  const { data } = useSelector((state: RootStore) => state.properties);
 
   // final and filtered results will be used in components rent
   const [results, setResults] = useState<PropertiesSale[]>([]);
@@ -43,7 +43,7 @@ const ForSale = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [dispatch]);
 
   // filter the data [3]
   useEffect(() => {
@@ -73,11 +73,7 @@ const ForSale = () => {
         </div>
       </div>
 
-      <div
-        className={
-          !view ? cx(styles.view, styles.list, 'list') : styles.default
-        }
-      >
+      <div className={!view ? cx(styles.view, styles.list, 'list') : styles.default}>
         {/* Display Header */}
         <PropertyDisplayHeader<TrackingParams, string>
           prop_type="For Sale"

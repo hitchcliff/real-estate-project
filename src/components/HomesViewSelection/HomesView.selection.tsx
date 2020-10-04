@@ -24,7 +24,7 @@ const HomesViewSelection = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [state]);
+  }, [state, dispatch]);
 
   return (
     <div className={styles.display}>

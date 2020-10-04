@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './HomesGridDisplay.module.scss';
 
 // solid
@@ -9,7 +9,6 @@ import {
   faBuilding,
   faBath,
 } from '@fortawesome/free-solid-svg-icons';
-import saved from '@fortawesome/free-solid-svg-icons/faHeart';
 
 // regular
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -48,8 +47,7 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
           <ul>
             <li>
               {' '}
-              <FontAwesomeIcon icon={faArrowsAltH} /> {item.community.sqft_min}{' '}
-              sqft.{' '}
+              <FontAwesomeIcon icon={faArrowsAltH} /> {item.community.sqft_min} sqft.{' '}
             </li>
             <li>
               {' '}
@@ -59,13 +57,11 @@ const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {
           <ul>
             <li>
               {' '}
-              <FontAwesomeIcon icon={faBuilding} /> {item.community.sqft_max}{' '}
-              sqft.{' '}
+              <FontAwesomeIcon icon={faBuilding} /> {item.community.sqft_max} sqft.{' '}
             </li>
             <li>
               {' '}
-              <FontAwesomeIcon icon={faBath} /> {item.community.baths_max}{' '}
-              Bath(s){' '}
+              <FontAwesomeIcon icon={faBath} /> {item.community.baths_max} Bath(s){' '}
             </li>
           </ul>
         </div>

@@ -16,7 +16,7 @@ const SortByPropertyType = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [value]);
+  }, [value, dispatch]);
   const handleToggleSelection = (e: string) => {
     setValue(e); // set the value we get from component
   };

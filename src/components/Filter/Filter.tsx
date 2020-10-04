@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { TrackingParams } from '../../types';
 import AccordionList from '../AccordionList/AccordionList';
 import SortByBaths from '../SortByBaths/SortByBaths';

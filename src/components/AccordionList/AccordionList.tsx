@@ -38,7 +38,7 @@ const AccordionList = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [listing]);
+  }, [listing, dispatch]);
 
   // for size
   useEffect(() => {
@@ -48,7 +48,7 @@ const AccordionList = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [size]);
+  }, [size, dispatch]);
 
   // set class active in accordion
   useEffect(() => {
@@ -93,10 +93,7 @@ const AccordionList = () => {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <div className={styles.content}>
-              <RadioToggle
-                items={ListingsContent}
-                callback={handleRadioToggle}
-              />
+              <RadioToggle items={ListingsContent} callback={handleRadioToggle} />
             </div>
           </AccordionItemPanel>
         </AccordionItem>

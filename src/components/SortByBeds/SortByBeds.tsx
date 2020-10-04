@@ -15,7 +15,7 @@ const SortByBeds = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [value]);
+  }, [value, dispatch]);
 
   const handleToggleSelection = (e: string) => {
     //callback function

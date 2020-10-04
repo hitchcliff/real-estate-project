@@ -1,5 +1,5 @@
 import { IFilterProp } from '../../Reducers/Filters.reducer';
-import { FormattedDataSale, PropertiesSale } from '../../types/Sale.types';
+import { PropertiesSale } from '../../types/Sale.types';
 import StageSale from './sale.staging';
 
 export const parseStrToNum = (value: string) => parseInt(value, 0);

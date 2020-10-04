@@ -22,20 +22,22 @@ const RealEstate = ({
 }: RouteComponentProps<IRealEstateProp, any, any>): JSX.Element => {
   return (
     <div className={styles.container}>
-      <Switch>
-        {/* For rent page */}
-        <Route exact={true} path={[match.url, match.url + '/rent']}>
-          <ForRent />
-        </Route>
-        {/* For sale page */}
-        <Route exact={true} path={match.url + '/sale'}>
-          <ForSale />
-        </Route>
-        {/* Sold page */}
-        <Route exact={true} path={match.url + '/sold'}>
-          <ForSold />
-        </Route>
-      </Switch>
+      <Router>
+        <Switch>
+          {/* For rent page */}
+          <Route exact={true} path={[match.url, match.url + '/rent']}>
+            <ForRent />
+          </Route>
+          {/* For sale page */}
+          <Route exact={true} path={match.url + '/sale'}>
+            <ForSale />
+          </Route>
+          {/* Sold page */}
+          <Route exact={true} path={match.url + '/sold'}>
+            <ForSold />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 };

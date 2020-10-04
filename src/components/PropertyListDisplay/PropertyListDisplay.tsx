@@ -4,14 +4,9 @@ import styles from './PropertyListDisplay.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBath, faBed } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import {
-  formatNumber,
-  formatNumberEstPerMonth,
-  propStatus,
-} from '../../helpers/util';
+import { formatNumber, formatNumberEstPerMonth, propStatus } from '../../helpers/util';
 
 import Pagination from '../Pagination/Pagination';
-import { PropertiesSale } from '../../types/Sale.types';
 
 interface IHomesListDisplayProp<T> {
   items?: T[];
@@ -50,9 +45,7 @@ const PropertyListDisplay = <T,>(prop: IHomesListDisplayProp<T>) => {
           <div className={styles.header__details}>
             <div className={styles.details_title}>
               <h4>
-                {item.branding
-                  ? item.branding.listing_office.list_item.name
-                  : `Recently`}{' '}
+                {item.branding ? item.branding.listing_office.list_item.name : `Recently`}{' '}
                 {propStatus(item.prop_status)}
               </h4>
               <span className={styles.date}>
@@ -63,9 +56,7 @@ const PropertyListDisplay = <T,>(prop: IHomesListDisplayProp<T>) => {
               <h2
                 style={{
                   textDecorationLine: `${
-                    item.prop_status === 'not_for_sale'
-                      ? 'line-through'
-                      : 'none'
+                    item.prop_status === 'not_for_sale' ? 'line-through' : 'none'
                   }`,
                 }}
               >
@@ -85,11 +76,8 @@ const PropertyListDisplay = <T,>(prop: IHomesListDisplayProp<T>) => {
               <h4>Details: </h4>
               <p>
                 {' '}
-                {item.lot_size === undefined ? 'N/A' : item.lot_size.size} sqft.
-                Lot size |{' '}
-                {item.building_size === undefined
-                  ? 'N/A'
-                  : item.building_size.size}{' '}
+                {item.lot_size === undefined ? 'N/A' : item.lot_size.size} sqft. Lot size
+                | {item.building_size === undefined ? 'N/A' : item.building_size.size}{' '}
                 sqft. Building size
               </p>
             </div>
@@ -97,8 +85,7 @@ const PropertyListDisplay = <T,>(prop: IHomesListDisplayProp<T>) => {
               <h4>Address: </h4>
               <p>
                 {' '}
-                {item.address.neighborhood_name &&
-                  item.address.neighborhood_name + ', '}
+                {item.address.neighborhood_name && item.address.neighborhood_name + ', '}
                 {item.address.line}
               </p>
             </div>

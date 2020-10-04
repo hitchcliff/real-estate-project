@@ -12,20 +12,16 @@ export const filterData = (
   { properties, tracking_params }: FormattedDataRent,
   filters: IFilterProp,
 ): PropertiesRent[] | undefined => {
-  if (!filters && !properties && !tracking_params) return;
-
   const { listing } = filters;
   if (!listing) return;
-
-  let new_properties: PropertiesRent[] = [];
 
   // check for listing
   const startListing = new Listing(properties, listing);
   const firstTest = startListing.listing(); // first test
-  new_properties = firstTest; // new properties first
+  // new properties first
 
   // start testing
-  const start = new StageRent(new_properties, filters);
+  const start = new StageRent(firstTest, filters);
   const finalTest = start.test(); // final test
   return finalTest; // return filtered tests
 };

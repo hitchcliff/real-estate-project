@@ -21,7 +21,7 @@ import { rent_propertiesDataFormat } from '../../helpers/rent/rent_format_data';
 import { formatDataRent } from '../../helpers/util';
 
 // types
-import { PropertiesRent, RentPhotos } from '../../types/Rent.types';
+import { PropertiesRent } from '../../types/Rent.types';
 import { TrackingParams } from '../../types';
 import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 
@@ -31,7 +31,7 @@ const ForRent = () => {
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
 
   // current data from api [1]
-  const { loading, data } = useSelector((state: RootStore) => state.properties);
+  const { data } = useSelector((state: RootStore) => state.properties);
 
   // final and filtered results will be used in components rent
   const [results, setResults] = useState<PropertiesRent[]>([]);
@@ -58,11 +58,13 @@ const ForRent = () => {
     const finalResults = filterData(new_data, filters);
 
     if (!finalResults) return;
+    console.log(finalResults);
     setResults(finalResults);
   }, [filters]);
 
   const new_items = rent_propertiesDataFormat(results); // format data for homes
   const address = getAddress<PropertiesRent>(results); // format address for map
+  console.log(filters);
 
   return (
     <div className={styles.container}>
@@ -80,11 +82,7 @@ const ForRent = () => {
           <HomesGridDisplay items={new_items} />
         </div>
       </div>
-      <div
-        className={
-          !view ? cx(styles.view, styles.list, 'list') : styles.default
-        }
-      >
+      <div className={!view ? cx(styles.view, styles.list, 'list') : styles.default}>
         {/* Display Header */}
         <PropertyDisplayHeader<TrackingParams, string>
           prop_type="for Rent"
