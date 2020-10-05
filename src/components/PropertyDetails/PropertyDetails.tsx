@@ -102,10 +102,12 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
           </span>
           <div className={styles.showcaseDetails}>
             <div className={styles.showcaseDetailsPrice}>
-              <h2>{formatNumber(Property.price)}</h2>
-              <span className={styles.est}>
-                Est. {formatNumberEstPerMonth(Property.price)} / mo
-              </span>
+              <div className={styles.price}>
+                <h2>{formatNumber(Property.price)}</h2>
+                <span className={styles.est}>
+                  Est. {formatNumberEstPerMonth(Property.price)} / mo
+                </span>
+              </div>
               <div className={styles.address}>
                 <span>
                   {' '}
@@ -128,16 +130,22 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
                 </span>
               </div>
               <div className={styles.icons}>
-                <FontAwesomeIcon icon={faArrowsAltH} />
-                <span>{Property.lot_size ? Property.lot_size.size : 'N/A'} sqft.</span>
+                <span>
+                  <FontAwesomeIcon icon={faArrowsAltH} />
+                  {Property.lot_size ? Property.lot_size.size : 'N/A'} sqft.
+                </span>
               </div>
               <div className={styles.icons}>
-                <FontAwesomeIcon icon={faBed} />
-                <span>{Property.beds} Beds</span>
+                <span>
+                  <FontAwesomeIcon icon={faBed} />
+                  {Property.beds} Beds
+                </span>
               </div>
               <div className={styles.icons}>
-                <FontAwesomeIcon icon={faBath} />
-                <span>{Property.baths} Baths</span>
+                <span>
+                  <FontAwesomeIcon icon={faBath} />
+                  {Property.baths} Baths
+                </span>
               </div>
             </div>{' '}
             {/* end info */}
