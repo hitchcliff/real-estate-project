@@ -38,8 +38,8 @@
       // is active
       &.active {
         a {
-          background-color: $sub;
-          color: white;
+          color: $sub;
+          border-bottom: 1px solid $sub;
         }
       }
 
