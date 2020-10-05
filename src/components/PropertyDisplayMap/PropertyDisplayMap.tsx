@@ -4,6 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import styles from './PropertyDisplayMap.module.scss';
 import cx from 'classnames';
 
+// components
+import SingleMap from '../SingleMap/SingleMap';
+
 // geojson
 import NYC from '../../geojson/nyc.json';
 
@@ -21,10 +24,11 @@ import { MapAddress } from '../../types/Rent.types';
 interface IPropertyDisplayMapProp<T> {
   address: MapAddress[];
   types?: T | any;
+  property?: T;
 }
 
 const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
-  const { address, types } = prop;
+  const { address, types, property } = prop;
   const { features }: any = NYC;
   const tile = `https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=${process.env.REACT_APP_MAP_KEY}`;
 
@@ -81,7 +85,7 @@ const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
       <Map zoom={11} maxZoom={15} minZoom={11} center={[pos.lat, pos.lng]}>
         <TileLayer url={tile} />
         <GeoJSON style={style} data={features}>
-          {mapMarker}
+          {address ? mapMarker : <SingleMap<T> property={property} />}
         </GeoJSON>
       </Map>
     </div>

@@ -4,78 +4,62 @@
   background: $ghost_white;
 }
 
+// info
+.info {
+  padding: 50px 0;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > span {
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .showcaseDetails {
+    // price
+    &Price {
+      h2 {
+        font-weight: $bold;
+        margin-right: 10px;
+      }
+
+      .address {
+        margin: 15px 0;
+
+        .tags {
+          margin-top: 10px;
+          span {
+            padding: 5px;
+            background-color: $sub;
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    // info
+    &Info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      div {
+        margin-right: 20px;
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
 .carousel {
   width: 100%;
   margin: auto;
   overflow: hidden;
   position: relative;
-  .form {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-5%, -50%);
-    width: 300px;
-    background-color: white;
-    padding: 40px 30px;
-    border-radius: 5px;
-    box-shadow: $box_shadow_1;
-
-    .formGroup:not(:last-child) {
-      margin-bottom: 10px;
-    }
-    .formGroup {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      overflow: hidden;
-      background-color: $ghost_white;
-
-      .label {
-        background-color: $sub;
-        padding: 10px 15px;
-        margin: 0;
-        height: 100%;
-        display: block;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        svg {
-          color: white;
-          opacity: 1;
-        }
-      }
-      input {
-        display: block;
-        height: 100%;
-        width: 100%;
-        border: none;
-        padding: 13px 10px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        background-color: $ghost_white;
-      }
-
-      textarea {
-        width: 100%;
-        border-radius: 5px;
-        padding: 15px 10px;
-        border: none;
-        background-color: $ghost_white;
-        margin-bottom: 10px;
-      }
-    }
-    .button {
-      button {
-        width: 100%;
-        a {
-          width: 100%;
-          display: block;
-          padding-top: 15px;
-          padding-bottom: 15px;
-        }
-      }
-      margin-bottom: 15px;
-    }
-  }
 }
