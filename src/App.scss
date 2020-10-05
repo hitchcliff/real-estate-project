@@ -66,3 +66,20 @@ h2 {
     box-shadow: none !important;
   }
 }
+
+// primary-button
+button.primary-button {
+  background: none;
+  border: none;
+  a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    background: $sub;
+    padding: 10px 40px;
+    box-shadow: 0 0 15px rgba($color: $sub, $alpha: 0.1);
+    color: $ghost_white;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+  }
+}

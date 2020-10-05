@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PropertyDetails.module.scss';
+import './PropertyDetailsCarousel.scss';
 
 // store
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +15,10 @@ import { Details } from '../../types/Details.types';
 // components
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
 import PageNotFound from '../404/404';
-import { convertCompilerOptionsFromJson } from 'typescript';
+
+// icons
+import { faUser, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface PropertyDetails extends RouteComponentProps {}
 interface Params {
@@ -56,26 +60,79 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
 
   // loop through all the post and match the id (very bad)
   useEffect(() => {
-    if (!Array.isArray(data)) return;
+    if (!data) return;
     const timer = setTimeout(() => {
-      for (const item of data) {
-        if (item.property_id === property_id) {
-          setItem(item);
+      for (const prop of data) {
+        if (prop.property_id === property_id) {
+          setProperty(prop);
         }
-        return;
       }
     });
     return () => {
       clearTimeout(timer);
     };
-  }, [data]);
-  console.log(data);
-  console.log(item);
+  }, [data, property_id]);
 
+  if (!Property) return <></>;
+  console.log(Property);
   return (
-    <div className={styles.container}>
+    <div className="property-details">
       {/* if returns undefined */}
-      {!item ? <PageNotFound /> : <div>We have an item {item.property_id}</div>}
+      <div className={styles.carousel}>
+        <PropertyDisplayCarousel
+          images={Property.photos}
+          thumbs={true}
+          alt={Property.address.line}
+        />
+        <form className={styles.form} method="post">
+          {/* fullname */}
+          <div className={styles.formGroup}>
+            <span className={styles.label}>
+              <FontAwesomeIcon icon={faUser} />
+            </span>
+            <input type="text" name="full" placeholder="Full name" value="" />
+          </div>
+
+          {/* email */}
+          <div className={styles.formGroup}>
+            <span className={styles.label}>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </span>
+            <input type="email" name="email" placeholder="Email" value="" />
+          </div>
+
+          {/* phone number */}
+          <div className={styles.formGroup}>
+            <span className={styles.label}>
+              <FontAwesomeIcon icon={faPhone} />
+            </span>
+            <input type="number" name="phone" placeholder="Phone number" value="" />
+          </div>
+
+          {/* message */}
+          <div className={styles.formGroup}>
+            <textarea
+              name="message"
+              id="message"
+              rows={4}
+              placeholder="I’m so interested in buying this house, let me know once..."
+            />
+          </div>
+
+          <div className={styles.button}>
+            {/* button */}
+            <button className="primary-button">
+              <a href="!#">Email agent</a>
+            </button>
+          </div>
+
+          {/* gdpr */}
+          <p>
+            By proceeding, you consent to receive calls and texts at the number you
+            provided
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
