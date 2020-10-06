@@ -85,7 +85,7 @@ const PropertyDisplayMap = <T,>(prop: IPropertyDisplayMapProp<T>) => {
       <Map zoom={11} maxZoom={15} minZoom={11} center={[pos.lat, pos.lng]}>
         <TileLayer url={tile} />
         <GeoJSON style={style} data={features}>
-          {address ? mapMarker : <SingleMap<T> property={property} />}
+          {address.length ? mapMarker : <SingleMap<T> property={property} />}
         </GeoJSON>
       </Map>
     </div>

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
+// scss
 import styles from './PropertyDetails.module.scss';
 import './PropertyDetailsCarousel.scss';
+import './PropertyDetailsMiniMap.scss';
+
+import cx from 'classnames';
 
 // store
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,6 +32,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
 import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
 import PropertyForm from '../PropertyForm/PropertyForm';
+import { getPropertyAddress } from '../../helpers/map.address';
 
 interface PropertyDetails extends RouteComponentProps {}
 interface Params {
@@ -55,6 +61,7 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
     };
   }, [match]);
 
+  // dispatch detailsaction
   useEffect(() => {
     const timer = setTimeout(async () => {
       dispatch(DetailsAction());
@@ -80,7 +87,11 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
   }, [data, property_id]);
 
   if (!Property) return <PageNotFound />;
+  // format address to have price and photo
+  const formatAddress = getPropertyAddress<PropertyDetails>(Property);
+  console.log(formatAddress);
   console.log(Property);
+
   return (
     <div className="property-details">
       {/* showcase */}
@@ -153,8 +164,8 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
           {/* end showcase details */}
         </div>{' '}
         {/* end left column */}
-        <div className={styles.right}>
-          <PropertyDisplayMap<AddressDetails> address={[]} property={Property.address} />
+        <div className={cx(styles.right, 'mini-map')}>
+          <PropertyDisplayMap<AddressDetails> address={[]} property={formatAddress} />
         </div>
         {/* end right column */}
       </div>{' '}

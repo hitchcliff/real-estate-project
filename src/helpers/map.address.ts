@@ -19,10 +19,21 @@ export const getAddress = <T>(
   return new_items;
 };
 
-export const getPropertyAddress = <T>(items: T[] | unknown): MapAddress[] => {
+export const getPropertyAddress = <T>(items: T[] | unknown): MapAddress[] | any => {
   const addresses: MapAddress[] = [];
 
-  if (!Array.isArray(items)) return addresses;
+  if (!Array.isArray(items)) {
+    const item: any = items;
+    return {
+      line: item.address ? item.address.line : 'No address',
+      city: item.address.city,
+      neighborhood_name: item.address.neighborhood_name,
+      thumbnail: item.photos[0].href,
+      price: item.price,
+      lat: item.address.lat,
+      lon: item.address.lon,
+    };
+  }
 
   for (const item of items) {
     addresses.push({

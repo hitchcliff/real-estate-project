@@ -9,9 +9,9 @@
   padding: 50px 0;
   width: 80%;
   margin: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  // grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
 
   .left {
     & > span {
@@ -42,12 +42,17 @@
 
           .tags {
             margin: 15px 0 20px 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             span {
+              display: block;
               padding: 5px;
               background-color: $sub;
               padding: 5px 10px;
               border-radius: 5px;
               opacity: 0.8;
+              margin: 5px 10px 5px 0;
             }
           }
         }
@@ -67,6 +72,10 @@
       }
     }
   } // end left
+
+  .right {
+    width: 100%;
+  }
 }
 .carousel {
   width: 100%;
