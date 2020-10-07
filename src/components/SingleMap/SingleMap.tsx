@@ -14,6 +14,8 @@ interface ISingleMapProp<T> {
 }
 const SingleMap = <T,>(props: ISingleMapProp<T>) => {
   const { property } = props;
+  if (!property) return <></>;
+  const { line, neighborhood_name, city, price, thumbnail, lat, lon } = property;
 
   // custom marker jsx icon
   const customMarkerDivIcon = (item: T) => {
@@ -26,27 +28,16 @@ const SingleMap = <T,>(props: ISingleMapProp<T>) => {
 
   return (
     <div className="mini-map">
-      <Marker
-        position={[property.lat ? property.lat : 0, property.lon ? property.lon : 0]}
-        icon={customMarkerDivIcon(property)}
-      >
+      <Marker position={[lat, lon]} icon={customMarkerDivIcon(property)}>
         <Popup className={styles.popup}>
           <div className={styles.details}>
             <h4>
-              {property.line}, {property.neighborhood_name}, {property.city}
+              {line}, {neighborhood_name}, {city}
             </h4>
-            <span>{property.price ? formatNumber(property.price) : property.price}</span>
+            <span>{price ? formatNumber(price) : price}</span>
           </div>
           <div className={styles.image}>
-            {property.prop_status === 'sold' &&
-            typeof property.prop_status !== 'undefined' ? (
-              <img src={property.sold_photos} alt={property.line} />
-            ) : (
-              <img
-                src={property.photos ? property.photos : property.thumbnail}
-                alt={property.line}
-              />
-            )}
+            <img src={thumbnail} alt={line} />
           </div>
         </Popup>
       </Marker>
