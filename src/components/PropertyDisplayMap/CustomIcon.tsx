@@ -9,7 +9,6 @@ interface ICustomIconProp<T> {
 
 const CustomIcon = <T,>(props: ICustomIconProp<T>) => {
   const { items } = props;
-  console.log(items);
   return (
     <div className={styles.customIcon}>
       <p key={items?.photos}>

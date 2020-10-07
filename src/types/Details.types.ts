@@ -81,7 +81,7 @@ interface FeatureDetails {
 }
 
 // schools
-interface SchoolDetails {
+export interface SchoolDetails {
   distance_in_miles: number;
   lat: number;
   lon: number;
@@ -90,6 +90,7 @@ interface SchoolDetails {
   name: string;
   phone: string;
   ratings: { great_school_rating: number; parent_rating: number };
+  grades: { range: { high: string; low: string } };
 }
 
 // exports

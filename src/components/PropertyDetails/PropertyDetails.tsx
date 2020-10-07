@@ -15,7 +15,7 @@ import { IDetailsReducerProp } from '../../Reducers/Details.reducer';
 import { RootStore } from '../../Store';
 
 // types
-import { AddressDetails, Details } from '../../types/Details.types';
+import { AddressDetails, Details, SchoolDetails } from '../../types/Details.types';
 
 // components
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
@@ -33,6 +33,7 @@ import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
 import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
 import PropertyForm from '../PropertyForm/PropertyForm';
 import { getPropertyAddress } from '../../helpers/map.address';
+import PropertyNearbySchools from '../PropertyNearbySchools/PropertyNearbySchools';
 
 interface PropertyDetails extends RouteComponentProps {}
 interface Params {
@@ -89,7 +90,6 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
   if (!Property) return <PageNotFound />;
   // format address to have price and photo
   const formatAddress = getPropertyAddress<PropertyDetails>(Property);
-  console.log(formatAddress);
   console.log(Property);
 
   return (
@@ -170,6 +170,9 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
         {/* end right column */}
       </div>{' '}
       {/* end info */}
+      {/* schools */}
+      <PropertyNearbySchools<SchoolDetails> item={Property.schools} />
+      {/* end schools */}
     </div>
   );
 };
