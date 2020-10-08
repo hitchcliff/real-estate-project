@@ -29,8 +29,8 @@ const PropertyNearbySchools = <T,>({ item }: IPropertyNearbySchools<T>) => {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <h2>Nearyby Schools</h2>
         <FontAwesomeIcon icon={faSchool} />
+        <h2>Nearyby Schools</h2>
       </div>
       <table>
         <tbody>
