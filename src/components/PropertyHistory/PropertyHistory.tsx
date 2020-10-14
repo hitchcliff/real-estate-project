@@ -23,14 +23,14 @@ const PropertyHistory = <T,>({ item }: IPropertyHistoryProp<T>) => {
   });
   return (
     <div className={styles.container}>
-      <div className={styles.heading}>
-        <FontAwesomeIcon icon={faHistory} />
-        Property History
-      </div>
-      <div className={styles.body}>
+      <div className={styles.container2}>
+        <div className={styles.heading}>
+          <FontAwesomeIcon icon={faHistory} />
+          <h2>Property History</h2>
+        </div>
         <table>
           <tbody>
-            <tr>
+            <tr className={styles.heads}>
               <th>Date</th>
               <th>Event</th>
               <th>Price</th>
@@ -39,12 +39,12 @@ const PropertyHistory = <T,>({ item }: IPropertyHistoryProp<T>) => {
             {mapHistory}
           </tbody>
         </table>
-      </div>
-      <div className={styles.footer}>
-        About History &amp; Taxes Data The price and tax history data displayed is
-        obtained from public records and/or MLS feeds from the local jurisdiction. Contact
-        your REALTOR® directly in order to obtain the most up-to-date information
-        available.
+        <div className={styles.footer}>
+          *About History &amp; Taxes Data The price and tax history data displayed is
+          obtained from public records and/or MLS feeds from the local jurisdiction.
+          Contact your REALTOR® directly in order to obtain the most up-to-date
+          information available.
+        </div>
       </div>
     </div>
   );

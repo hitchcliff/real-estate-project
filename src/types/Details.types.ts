@@ -33,7 +33,7 @@ export interface Details {
   price: number;
   prop_status: string;
   prop_type: string;
-  propperty_history: [{ price: number; sqft: number; date: Date; event_name: string }];
+  property_history: PropertyHistoryDetails[];
   property_id: string;
   schools: SchoolDetails[];
   stories: number;
@@ -78,6 +78,15 @@ interface FeatureDetails {
   category: string;
   parent_category: string;
   text: string[];
+}
+
+// history
+export interface PropertyHistoryDetails {
+  price: number;
+  sqft: number;
+  date: Date;
+  event_name: string;
+  datasource_name: string;
 }
 
 // schools

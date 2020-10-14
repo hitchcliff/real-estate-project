@@ -18,6 +18,7 @@ body {
 
 #page-container {
   background-color: $ghost_white;
+  min-height: 95vh;
 }
 
 // input and buttons
@@ -81,5 +82,90 @@ button.primary-button {
     text-decoration: none;
     border: none;
     border-radius: 30px;
+  }
+}
+
+// table row
+tr {
+  text-align: left;
+  th {
+    padding: 10px 0;
+  }
+  td {
+    padding: 5px 0;
+  }
+}
+
+// rating
+.school-rating {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  color: white;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.school-rating-high {
+  background: green;
+}
+.school-rating-med {
+  background: $sub;
+}
+.school-rating-low {
+  background: red;
+}
+
+// property related
+.property-related {
+  .carousel {
+    // each individual slides
+    .slide {
+      background: none;
+    }
+
+    button.control-arrow.control-next {
+      right: -30px;
+    }
+
+    button.control-arrow.control-prev {
+      left: -30px;
+    }
+
+    button.control-arrow.control-next:hover,
+    button.control-arrow.control-prev:hover {
+      background: none !important;
+    }
+    .control-next.control-arrow:before {
+      border-left: 15px solid $sub !important;
+    }
+
+    .control-prev.control-arrow:before {
+      border-right: 15px solid $sub !important;
+    }
+  }
+}
+
+// carousel slider-wrapper
+.carousel .slider-wrapper {
+  overflow-x: scroll !important;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar {
+      background: white;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $sub;
+      border-radius: 10px;
+    }
   }
 }

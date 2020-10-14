@@ -1,0 +1,21 @@
+.container-404 {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-size: 8rem;
+    color: black;
+    font-weight: bold;
+  }
+
+  span {
+    color: black;
+    opacity: 0.3;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+}

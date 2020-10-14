@@ -1,10 +1,16 @@
 import React, { ReactElement } from 'react';
 import './App.scss';
-import { ForRent, ForSale, ForSold, Homepage, Navbar } from './components';
+
+// router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// components
 import PageNotFound from './components/404/404';
 import PropertyDetails from './components/PropertyDetails/PropertyDetails';
 import RentDetails from './components/RentDetails/RentDetails';
+
+// main components
+import { Footer, ForRent, ForSale, ForSold, Homepage, Navbar } from './components';
 
 const App = (): ReactElement => {
   return (
@@ -28,6 +34,7 @@ const App = (): ReactElement => {
             <Route component={PageNotFound} />
           </Switch>
         </div>
+        <Footer />
       </Router>
     </div>
   );

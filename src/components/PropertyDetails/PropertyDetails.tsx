@@ -15,25 +15,26 @@ import { IDetailsReducerProp } from '../../Reducers/Details.reducer';
 import { RootStore } from '../../Store';
 
 // types
-import { AddressDetails, Details, SchoolDetails } from '../../types/Details.types';
+import {
+  Details,
+  PropertyHistoryDetails,
+  SchoolDetails,
+} from '../../types/Details.types';
 
 // components
 import PropertyDisplayCarousel from '../PropertyDisplayCarousel/PropertyDisplayCarousel';
 import PageNotFound from '../404/404';
 
-// icons
-import {
-  faBath,
-  faBed,
-  faArrowsAltH,
-  faBuilding,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { formatNumber, formatNumberEstPerMonth } from '../../helpers/util';
-import PropertyDisplayMap from '../PropertyDisplayMap/PropertyDisplayMap';
+// components
 import PropertyForm from '../PropertyForm/PropertyForm';
-import { getPropertyAddress } from '../../helpers/map.address';
 import PropertyNearbySchools from '../PropertyNearbySchools/PropertyNearbySchools';
+import PropertyHistory from '../PropertyHistory/PropertyHistory';
+import PropertyBroker from '../PropertyBroker/PropertyBroker';
+import PropertyRelated from '../PropertyRelated/PropertyRelated';
+import PropertyInfo from '../PropertyInfo/PropertyInfo';
+
+// loading
+import Loading from '../Loading/Loading';
 
 interface PropertyDetails extends RouteComponentProps {}
 interface Params {
@@ -48,7 +49,7 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
   );
 
   // Property
-  const [Property, setProperty] = useState<Details>();
+  const [Property, setProperty] = useState<Details | any>();
 
   // get the id of the property
   useEffect(() => {
@@ -89,90 +90,30 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
 
   if (!Property) return <PageNotFound />;
   // format address to have price and photo
-  const formatAddress = getPropertyAddress<PropertyDetails>(Property);
-  console.log(Property);
 
   return (
-    <div className="property-details">
+    <div className={cx(styles.propertyDetails, 'property-details')}>
       {/* showcase */}
       <div className={styles.carousel}>
         <PropertyDisplayCarousel
           images={Property.photos}
           thumbs={true}
           alt={Property.address.line}
+          showArrows={false}
+          showStatus={false}
         />
         {/* form */}
         <PropertyForm />
       </div>
-      {/* info */}
-      <div className={styles.info}>
-        <div className={styles.left}>
-          <span>
-            <b>Type: </b> {Property.prop_type} | <b>Year built:</b>
-            {Property.year_built}
-          </span>
-          <div className={styles.showcaseDetails}>
-            <div className={styles.showcaseDetailsPrice}>
-              <div className={styles.price}>
-                <h2>{formatNumber(Property.price)}</h2>
-                <span className={styles.est}>
-                  Est. {formatNumberEstPerMonth(Property.price)} / mo
-                </span>
-              </div>
-              <div className={styles.address}>
-                <span>
-                  {' '}
-                  <b>Address: </b>
-                  {Property.address.country ? Property.address.country + ' ,' : null}{' '}
-                  {Property.address.line} {Property.address.city}
-                </span>
-                <div className={styles.tags}>
-                  {Property.feature_tags.map((item, i) => (
-                    <span key={i}>{item}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className={styles.showcaseDetailsInfo}>
-              <div className={styles.icons}>
-                <span>
-                  <FontAwesomeIcon icon={faBuilding} />
-                  {Property.building_size ? Property.building_size.size : 'N/A'} sqft.
-                </span>
-              </div>
-              <div className={styles.icons}>
-                <span>
-                  <FontAwesomeIcon icon={faArrowsAltH} />
-                  {Property.lot_size ? Property.lot_size.size : 'N/A'} sqft.
-                </span>
-              </div>
-              <div className={styles.icons}>
-                <span>
-                  <FontAwesomeIcon icon={faBed} />
-                  {Property.beds} Beds
-                </span>
-              </div>
-              <div className={styles.icons}>
-                <span>
-                  <FontAwesomeIcon icon={faBath} />
-                  {Property.baths} Baths
-                </span>
-              </div>
-            </div>{' '}
-            {/* end info */}
-          </div>{' '}
-          {/* end showcase details */}
-        </div>{' '}
-        {/* end left column */}
-        <div className={cx(styles.right, 'mini-map')}>
-          <PropertyDisplayMap<AddressDetails> address={[]} property={formatAddress} />
-        </div>
-        {/* end right column */}
-      </div>{' '}
-      {/* end info */}
-      {/* schools */}
+      <PropertyInfo<PropertyDetails> property={Property} />
       <PropertyNearbySchools<SchoolDetails> item={Property.schools} />
-      {/* end schools */}
+      <PropertyHistory<PropertyHistoryDetails> item={Property.property_history} />
+      <PropertyBroker<any, any> broker={Property.broker} office={Property.office} />{' '}
+      <PropertyRelated<PropertyDetails>
+        related={Property}
+        prop_type={Property.prop_type}
+        status={Property.listing_status}
+      />
     </div>
   );
 };

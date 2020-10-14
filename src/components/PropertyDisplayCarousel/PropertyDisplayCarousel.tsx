@@ -9,12 +9,14 @@ interface IHomesDisplayCarouselProp<T> {
   images: T[]; // expect an array
   alt: string;
   thumbs: boolean;
+  showArrows?: boolean;
+  showStatus?: boolean;
 }
 
 const PropertyDisplayCarousel = <T,>(
   props: IHomesDisplayCarouselProp<T>,
 ): JSX.Element => {
-  const { images, alt, thumbs } = props;
+  const { images, alt, thumbs, showArrows } = props;
   if (!images || !alt) return <></>;
   const _images: T[] | unknown = images.slice(0, 5); // get images between 0 til 5 array
 
@@ -33,7 +35,7 @@ const PropertyDisplayCarousel = <T,>(
   }
 
   return (
-    <Carousel showThumbs={thumbs}>
+    <Carousel showThumbs={thumbs} showArrows={false} showStatus={false}>
       {values.map((value: any, i) => (
         <div key={i}>
           <img src={value} alt={alt} />

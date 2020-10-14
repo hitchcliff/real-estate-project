@@ -1,85 +1,13 @@
 @import '../../styles/global';
 
-.property-details {
-  background: $ghost_white;
-}
+.propertyDetails {
+  background: white;
+  min-height: 80vh;
 
-// info
-.info {
-  padding: 50px 0;
-  width: 80%;
-  margin: auto;
-  display: grid;
-  // grid-template-columns: 1fr 1fr;
-  grid-gap: 50px;
-
-  .left {
-    & > span {
-      text-transform: capitalize;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .showcaseDetails {
-      // price
-      &Price {
-        .price {
-          display: flex;
-          flex-direction: row;
-          h2 {
-            font-weight: $bold;
-            margin-right: 10px;
-            font-size: 2rem;
-            line-height: 2rem;
-          }
-          .est {
-            margin-top: auto;
-          }
-        }
-
-        .address {
-          margin: 15px 0;
-
-          .tags {
-            margin: 15px 0 20px 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            span {
-              display: block;
-              padding: 5px;
-              background-color: $sub;
-              padding: 5px 10px;
-              border-radius: 5px;
-              opacity: 0.8;
-              margin: 5px 10px 5px 0;
-            }
-          }
-        }
-      }
-
-      // info
-      &Info {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        div {
-          margin-right: 20px;
-          svg {
-            margin-right: 5px;
-          }
-        }
-      }
-    }
-  } // end left
-
-  .right {
+  .carousel {
     width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
   }
-}
-.carousel {
-  width: 100%;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
 }

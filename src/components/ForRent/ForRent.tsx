@@ -82,7 +82,7 @@ const ForRent = () => {
             tracker={data?.meta.tracking_params}
           />
           {/* Grid Display */}
-          <HomesGridDisplay items={new_items} />
+          <HomesGridDisplay items={new_items} itemPerPage={12} />
         </div>
       </div>
       <div className={!view ? cx(styles.view, styles.list, 'list') : styles.default}>

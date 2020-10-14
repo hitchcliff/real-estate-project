@@ -19,15 +19,28 @@ import { Link } from 'react-router-dom';
 interface IRentGridDisplayProp<T, Images> {
   items?: T[];
   images?: Images;
+  itemPerPage: number;
+  pagination?: boolean;
+  offset?: number;
+  isGrid?: boolean;
 }
+
+// styles
+const customStyles = {
+  gridTemplateColumns: '1fr 1fr 1fr 1fr',
+  minWidth: '1200px',
+};
+
 // tslint:disable-next-line: typedef
 const PropertyGridDisplay = <T, Images>(props: IRentGridDisplayProp<T, Images>) => {
-  const { items } = props;
+  const { items, itemPerPage, pagination, offset, isGrid } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(12);
+  const [itemsPerPage] = useState(itemPerPage);
+
+  const checkOffset = offset ? offset : 0;
 
   const lastIndex = currentPage * itemsPerPage; // get the last index
-  const firstIndex = lastIndex - itemsPerPage; // get the first index
+  const firstIndex = lastIndex + checkOffset - itemsPerPage; // get the first index
   if (!items) {
     return null;
   }
@@ -126,8 +139,12 @@ const PropertyGridDisplay = <T, Images>(props: IRentGridDisplayProp<T, Images>) 
   });
   return (
     <div className={styles.container}>
-      <div className={styles.home_container}>{itemsMapper}</div>
-      <Pagination number={totalPagesNumber} callback={handleClickPageNumber} />
+      <div style={isGrid ? customStyles : undefined} className={styles.home_container}>
+        {itemsMapper}
+      </div>
+      {pagination ? (
+        <Pagination number={totalPagesNumber} callback={handleClickPageNumber} />
+      ) : null}
     </div>
   );
 };

@@ -69,7 +69,12 @@ const ForSold = () => {
             tracker={data?.meta.tracking_params}
           />
           {/* Grid Display */}
-          <PropertyGridDisplay<PropertiesSold, SoldPhotos> items={results} />
+          <PropertyGridDisplay<PropertiesSold, SoldPhotos>
+            items={results}
+            itemPerPage={12}
+            pagination={true}
+            isGrid={false}
+          />
         </div>
       </div>
       <div className={!view ? cx(styles.view, styles.list, 'list') : styles.default}>

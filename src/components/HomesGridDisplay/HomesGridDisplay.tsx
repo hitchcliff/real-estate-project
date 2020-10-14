@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom';
 
 interface IHomesGridDisplayProp {
   items?: PropertiesRent[];
+  itemPerPage: number;
 }
 // tslint:disable-next-line: typedef
 const HomesGridDisplay: React.FC<IHomesGridDisplayProp> = (props) => {

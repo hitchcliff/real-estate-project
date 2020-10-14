@@ -1,0 +1,48 @@
+@import '../../styles/global';
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+  z-index: 151412513131;
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: 5px solid rgba($color: $sub, $alpha: 0.2);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      background-color: $sub;
+      border-radius: 30px;
+      animation: Enlarge 0.5s infinite ease;
+    }
+  }
+}
+
+@keyframes Enlarge {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes Outline {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(100%);
+    border-color: $sub;
+  }
+}

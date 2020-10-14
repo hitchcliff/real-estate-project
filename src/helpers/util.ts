@@ -143,3 +143,9 @@ export const getSavedStateLocalStorage = <T>(id: T) => {
   if (typeof id !== 'string') return;
   return localStorage.getItem('State ' + id);
 };
+
+// format string dining_room = Dining Room
+export const formatString = (str: string): string => {
+  const splitStr = str.split('_').join(' ');
+  return splitStr;
+};
