@@ -1,0 +1,56 @@
+@import '../../styles/global';
+.mobile_container {
+  display: none;
+  .burger {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    svg {
+      font-size: 2.5rem;
+      color: $sub;
+    }
+  }
+
+  .dropdown,
+  .dropdownActive {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+    width: 350px;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    grid-gap: 20px;
+    li {
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: $most_used;
+        font-size: 1.2rem;
+        &.active {
+          color: $sub;
+        }
+      }
+    }
+  }
+
+  .dropdown {
+    top: -300%;
+    z-index: -145151321512;
+    opacity: 0;
+  }
+
+  .dropdownActive {
+    border-top: 2px solid $sub;
+    top: 150%;
+    z-index: 1251284179;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .mobile_container {
+    display: block;
+  }
+}

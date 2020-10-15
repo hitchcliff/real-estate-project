@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Footer.module.scss';
 
 // components
-import Menu from '../Navbar/Menu';
+import DesktopMenu from '../Navbar/DesktopMenu';
 
 // images
 import Logo from '../../logo.svg';
@@ -16,7 +16,7 @@ const Footer2 = () => {
   return (
     <div className={styles.footer2}>
       <div className={styles.nav}>
-        <Menu />
+        <DesktopMenu />
         <div className={styles.doNotSellInformation}>
           <a href="!#">Do not sell my information</a>
         </div>

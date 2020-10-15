@@ -14,11 +14,11 @@ body {
   font-family: 'Nunito', sans-serif;
   font-weight: $regular;
   outline: none;
+  min-height: 100vh;
 }
 
 #page-container {
   background-color: $ghost_white;
-  min-height: 95vh;
 }
 
 // input and buttons

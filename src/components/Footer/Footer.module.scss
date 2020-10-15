@@ -90,7 +90,6 @@
 
       // menu
       ul {
-        display: grid;
         grid-gap: 20px;
         display: flex;
         flex-direction: row;
@@ -130,7 +129,6 @@
 
     // social
     .social {
-      display: grid;
       grid-gap: 20px;
       display: flex;
       flex-direction: row;
@@ -150,7 +148,6 @@
       }
 
       .socialIcons {
-        display: grid;
         grid-gap: 5px;
         display: flex;
         flex-direction: row;
