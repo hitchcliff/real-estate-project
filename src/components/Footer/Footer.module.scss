@@ -1,5 +1,70 @@
 @import '../../styles/global';
 .container {
+  // footer 1
+  z-index: 0;
+  .footer1 {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: column;
+    padding-top: 50px;
+
+    // social
+    .social {
+      li {
+        margin-bottom: 10px;
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          svg {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            background: $sub;
+            padding: 5px;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            color: white;
+          }
+        }
+      }
+    }
+
+    // download
+    .apps {
+      li {
+        margin-bottom: 5px;
+        a {
+          display: flex;
+          width: 50%;
+          text-align: center;
+          border: 2px solid $most_used;
+          padding: 10px;
+          border-radius: 5px;
+          align-items: center;
+          justify-content: center;
+          svg {
+            font-size: 1.5rem;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    ul {
+      margin-top: 20px;
+      li {
+        list-style-type: none;
+        a {
+          color: $most_used;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  // footer 2
   .footer2 {
     margin: 0 auto;
     .nav,
