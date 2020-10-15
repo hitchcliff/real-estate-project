@@ -4,7 +4,6 @@ import styles from './Footer.module.scss';
 // icons
 import {
   faApple,
-  faAppStore,
   faFacebookF,
   faGooglePlay,
   faInstagram,

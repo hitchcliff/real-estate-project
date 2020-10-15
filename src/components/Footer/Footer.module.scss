@@ -37,7 +37,7 @@
         margin-bottom: 5px;
         a {
           display: flex;
-          width: 50%;
+          width: 80%;
           text-align: center;
           border: 2px solid $most_used;
           padding: 10px;
@@ -179,6 +179,50 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .container {
+    .footer1 {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-flow: row;
+      grid-gap: 20px;
+      padding: 50px;
+
+      .apps {
+        li {
+          a {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    .footer1 {
+      text-align: center;
+      grid-template-columns: 1fr;
+      .social {
+        li {
+          a {
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    .footer2 {
+      ul {
+        flex-wrap: wrap;
+      }
+      .social {
+        flex-direction: column;
+      }
     }
   }
 }
