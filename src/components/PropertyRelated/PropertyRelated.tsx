@@ -15,6 +15,7 @@ import { RootStore } from '../../Store';
 // tempo data
 import PropertyGridDisplay from '../PropertyGridDisplay/PropertyGridDisplay';
 import { Carousel } from 'react-responsive-carousel';
+import Loading from '../Loading/Loading';
 
 interface IPropertyRelatedProp<T> {
   related: T;
@@ -38,10 +39,11 @@ const PropertyRelated = <T,>({ related, prop_type, status }: IPropertyRelatedPro
     };
   }, [prop_type, status, dispatch]);
 
+  // filter data
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!data) return;
-      const filteredData: any = data.filter(
+      const filteredData: any = data.properties.filter(
         (item: any) => item.prop_status.toLowerCase() === status,
       );
       setFiltered(filteredData);
@@ -52,6 +54,7 @@ const PropertyRelated = <T,>({ related, prop_type, status }: IPropertyRelatedPro
   }, [status, data]);
 
   // no related properties
+  if (loading) return <Loading />;
   if (filtered.length === 0) return <></>;
   return (
     <div className={cx(styles.container, 'property-related')}>
