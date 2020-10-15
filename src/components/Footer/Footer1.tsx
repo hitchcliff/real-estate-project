@@ -12,6 +12,7 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 const Footer1 = () => {
   return (
@@ -109,6 +110,10 @@ const Footer1 = () => {
               Get it on Android
             </a>
           </li>
+          <span>
+            Made by with &hearts; by&nbsp;
+            <Link to="godjs.ga">Kevin Nacario</Link>
+          </span>
         </ul>
       </div>
     </div>
