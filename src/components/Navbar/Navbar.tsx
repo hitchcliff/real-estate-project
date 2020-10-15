@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Menu from './Menu';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
@@ -12,28 +13,7 @@ const Navbar = () => {
           <Link to="godjs.ga">Kevin Nacario</Link>
         </span>
       </div>
-
-      {/* menu */}
-      <ul className={styles.menu}>
-        <li className={styles.active}>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/sale">Sale</Link>
-        </li>
-        <li>
-          <Link to="/rent">Rent</Link>
-        </li>
-        <li>
-          <Link to="/sold">Sold</Link>
-        </li>
-      </ul>
+      <Menu/>
       <div className={styles.auth}>
         <button className="button-primary">
           <Link to="/login">Login</Link>
