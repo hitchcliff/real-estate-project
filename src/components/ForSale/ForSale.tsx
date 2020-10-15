@@ -27,7 +27,7 @@ const ForSale = () => {
   const dispatch = useDispatch();
 
   // current data from api [1]
-  const { data } = useSelector((state: RootStore) => state.properties);
+  const { data, loading } = useSelector((state: RootStore) => state.properties);
 
   // final and filtered results will be used in components rent
   const [results, setResults] = useState<PropertiesSale[]>([]);
@@ -56,6 +56,7 @@ const ForSale = () => {
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
   const address = getPropertyAddress<PropertiesSale>(results); // format address for map
 
+  if (loading) return <></>;
   return (
     <div className={styles.container}>
       <HomesViewSelection />

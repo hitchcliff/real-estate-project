@@ -99,6 +99,7 @@ const PropertyInfo = <T,>({ property }: IPropertyInfoProp<T>) => {
       <div className={cx(styles.right, 'mini-map')}>
         <PropertyDisplayMap<AddressDetails> address={[]} property={formatAddress} />
       </div>
+      {/* <PropertyBroker<any, any> broker={broker} office={office} />{' '} */}
     </div>
   );
 };

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // scss
 import styles from './PropertyDetails.module.scss';
 import './PropertyDetailsCarousel.scss';
-import './PropertyDetailsMiniMap.scss';
 
 import cx from 'classnames';
 
@@ -29,7 +28,6 @@ import PageNotFound from '../404/404';
 import PropertyForm from '../PropertyForm/PropertyForm';
 import PropertyNearbySchools from '../PropertyNearbySchools/PropertyNearbySchools';
 import PropertyHistory from '../PropertyHistory/PropertyHistory';
-import PropertyBroker from '../PropertyBroker/PropertyBroker';
 import PropertyRelated from '../PropertyRelated/PropertyRelated';
 import PropertyInfo from '../PropertyInfo/PropertyInfo';
 
@@ -88,8 +86,8 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
     };
   }, [data, property_id]);
 
+  if (loading || !Property) return <Loading />;
   if (!Property) return <PageNotFound />;
-  // format address to have price and photo
 
   return (
     <div className={cx(styles.propertyDetails, 'property-details')}>
@@ -108,7 +106,6 @@ const PropertyDetails: React.FC<PropertyDetails> = ({ match }) => {
       <PropertyInfo<PropertyDetails> property={Property} />
       <PropertyNearbySchools<SchoolDetails> item={Property.schools} />
       <PropertyHistory<PropertyHistoryDetails> item={Property.property_history} />
-      <PropertyBroker<any, any> broker={Property.broker} office={Property.office} />{' '}
       <PropertyRelated<PropertyDetails>
         related={Property}
         prop_type={Property.prop_type}

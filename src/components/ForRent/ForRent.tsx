@@ -24,6 +24,7 @@ import { formatDataRent } from '../../helpers/util';
 import { PropertiesRent } from '../../types/Rent.types';
 import { TrackingParams } from '../../types';
 import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
+import Loading from '../Loading/Loading';
 
 const ForRent = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const ForRent = () => {
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
 
   // current data from api [1]
-  const { data } = useSelector((state: RootStore) => state.properties);
+  const { data, loading } = useSelector((state: RootStore) => state.properties);
 
   // final and filtered results will be used in components rent
   const [results, setResults] = useState<PropertiesRent[]>([]);
@@ -68,6 +69,7 @@ const ForRent = () => {
 
   const new_items = rent_propertiesDataFormat(results); // format data for homes
   const address = getAddress<PropertiesRent>(results); // format address for map
+  if (loading) return <Loading />;
 
   return (
     <div className={styles.container}>

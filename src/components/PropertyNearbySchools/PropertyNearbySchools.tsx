@@ -48,17 +48,19 @@ const PropertyNearbySchools = <T,>({ item }: IPropertyNearbySchools<T>) => {
           <FontAwesomeIcon icon={faSchool} />
           <h2>Nearby Schools</h2>
         </div>
-        <table>
-          <tbody>
-            <tr className="heads">
-              <th>Rating</th>
-              <th>School Name</th>
-              <th>Grades</th>
-              <th>Distance(miles)</th>
-            </tr>
-            {mapTables}
-          </tbody>
-        </table>
+        <div className={styles.table} style={{ overflow: 'auto' }}>
+          <table>
+            <tbody>
+              <tr className="heads">
+                <th>Rating</th>
+                <th>School Name</th>
+                <th>Grades</th>
+                <th>Distance(miles)</th>
+              </tr>
+              {mapTables}
+            </tbody>
+          </table>
+        </div>
         <div className={styles.footer}>
           <p>
             *School data provided by National Center for Education Statistics, Pitney

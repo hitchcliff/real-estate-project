@@ -22,12 +22,13 @@ import { PropertiesFilterData } from '../../helpers/properties/properties.filter
 import { TrackingParams } from '../../types';
 import { getPropertyAddress } from '../../helpers/map.address';
 import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
+import Loading from '../Loading/Loading';
 
 const ForSold = () => {
   const dispatch = useDispatch();
 
   // current data from api [1]
-  const { data } = useSelector((state: RootStore) => state.properties);
+  const { data, loading } = useSelector((state: RootStore) => state.properties);
 
   // final and filtered results will be used in components rent
   const [results, setResults] = useState<PropertiesSold[]>([]);
@@ -56,6 +57,7 @@ const ForSold = () => {
   const view = useSelector((state: RootStore) => state.view); // current view [list, grid]
   const address = getPropertyAddress<PropertiesSold>(results); // format address for map
 
+  if (loading) return <Loading />;
   return (
     <div className={styles.container}>
       <HomesViewSelection />
