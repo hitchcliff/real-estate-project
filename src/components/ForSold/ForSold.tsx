@@ -63,7 +63,9 @@ const ForSold = () => {
       <HomesViewSelection />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
-        <Filter filter={data?.tracking_params} />
+        <div className={styles.filter_container}>
+          <Filter filter={data?.tracking_params} />
+        </div>
         <div className={styles.grid_container}>
           {/* Display Header */}
           <PropertyDisplayHeader<TrackingParams, string>

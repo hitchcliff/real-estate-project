@@ -53,3 +53,22 @@
     transform: translateX(110%);
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    .grid {
+      grid-template-areas:
+        'grid'
+        'filter';
+      grid-template-columns: 1fr;
+      .grid_container {
+        grid-area: grid;
+        padding: 50px;
+      }
+      .filter_container {
+        grid-area: filter;
+        padding: 0 50px 50px 50px;
+      }
+    }
+  }
+}

@@ -76,7 +76,9 @@ const ForRent = () => {
       <HomesViewSelection />
       <div className={view ? cx(styles.view, styles.grid) : styles.default}>
         {/* Filters */}
-        <Filter filter={new_data?.tracking_params} />
+        <div className={styles.filter_container}>
+          <Filter filter={new_data?.tracking_params} />
+        </div>
         <div className={styles.grid_container}>
           {/* Display Header */}
           <PropertyDisplayHeader<TrackingParams, string>
