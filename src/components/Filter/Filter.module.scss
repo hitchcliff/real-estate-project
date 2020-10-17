@@ -1,48 +1,51 @@
 @import '../../styles/global';
 
 .container {
-    display: flex;
-    flex-direction: column;
-    box-shadow: $box_shadow_1;
-    z-index: 1;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $box_shadow_1;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: white;
+  width: 350px;
 
-    h4 { // local h4
-        font-weight: $regular;
-        margin-bottom: 15px;
+  h4 {
+    // local h4
+    font-weight: $regular;
+    margin-bottom: 15px;
+  }
+  .header {
+    // header
+    padding: 20px;
+    background: $ghost_white;
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .header { // header
-        padding: 20px;
-        background: $ghost_white;
-        div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
+  }
+  .filters {
+    overflow: auto;
+    .button {
+      display: flex;
+      margin-left: auto;
     }
-    .filters {
-        overflow: auto;
-        .button {
-            display: flex;
-            margin-left: auto;
-        }
 
-        &::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        &:hover {
-            &::-webkit-scrollbar {
-                background: white;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: $sub;
-            }
-        }
-
+    &::-webkit-scrollbar {
+      width: 10px;
     }
+
+    &:hover {
+      &::-webkit-scrollbar {
+        background: white;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $sub;
+      }
+    }
+  }
 }
