@@ -23,6 +23,7 @@ import { TrackingParams } from '../../types';
 import { getPropertyAddress } from '../../helpers/map.address';
 import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 import Loading from '../Loading/Loading';
+import Search from '../Search/Search';
 
 const ForSold = () => {
   const dispatch = useDispatch();
@@ -96,6 +97,9 @@ const ForSold = () => {
           </div>
         </div>
       </div>
+
+      {/* search */}
+      <Search />
     </div>
   );
 };

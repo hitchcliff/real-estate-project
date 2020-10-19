@@ -25,6 +25,7 @@ import { PropertiesRent } from '../../types/Rent.types';
 import { TrackingParams } from '../../types';
 import HomesViewSelection from '../HomesViewSelection/HomesView.selection';
 import Loading from '../Loading/Loading';
+import Search from '../Search/Search';
 
 const ForRent = () => {
   const dispatch = useDispatch();
@@ -104,6 +105,7 @@ const ForRent = () => {
           </div>
         </div>
       </div>
+      <Search />
     </div>
   );
 };
