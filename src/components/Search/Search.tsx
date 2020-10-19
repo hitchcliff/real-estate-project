@@ -35,11 +35,8 @@ const Search = () => {
       if (!data) return;
       const matches = data.filter((item) => {
         const regex = new RegExp(`^${search}`, 'gi');
-        const city = item.city.toLowerCase();
-        const country = item.country.toLowerCase();
 
-        console.log(search);
-        return city.includes(search) || country.includes(search);
+        return item.city.match(regex) || item.country.match(regex);
       });
 
       if (search.length === 0) {
@@ -53,19 +50,10 @@ const Search = () => {
     };
   }, [search]);
 
-  //   results
-  const searchMap = output?.map((item: AutoComplete, index: number) => {
-    return (
-      <div key={index} className={styles.dropwdown}>
-        {item.country}, {item.city}
-      </div>
-    );
-  });
-
   //   check errors in the placeholder
   const placeholder =
     output?.length === 0 || !output
-      ? 'USA, Manhattan'
+      ? ''
       : !output[0].country
       ? ''
       : !output[0].city
@@ -82,13 +70,13 @@ const Search = () => {
               name="s"
               id="s"
               onChange={(e) => setSearch(e.currentTarget.value)}
+              placeholder="Search"
             />
           </div>
           <div className={styles.icon}>
             <FontAwesomeIcon icon={faSearch} />
           </div>
         </div>
-        {/* <div className={styles.selections}>{searchMap}</div> */}
       </form>
     </div>
   );
