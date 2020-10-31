@@ -1,5 +1,6 @@
 {
   "name": "react-redux-typescript-boilerplate",
+  "homepage": "https://hitchcliff.github.io/real-estate-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,6 +19,7 @@
     "@types/react-dom": "^16.9.0",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "gh-pages": "^3.1.0",
     "leaflet": "^1.7.1",
     "react": "^16.13.1",
     "react-accessible-accordion": "^3.3.3",
@@ -33,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
