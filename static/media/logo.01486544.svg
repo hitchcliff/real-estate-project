@@ -1,0 +1,42 @@
+<svg id="kevin" data-name="kevs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 353.78 417.16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a3d397;
+      }
+      #float {
+        transform: translateY(0);
+        animation: Jumps 2s infinite linear;
+      }
+      #side {
+        fill: #00000;
+      }
+      @keyframes Jumps {
+        0% {
+          transform: translateY(0);
+        }
+        20% {
+          transform: translateY(-20px);
+        }
+        40% {
+          transform: translateY(-40px);
+        }
+        60% {
+          transform: translateY(-40px);
+        }
+        80% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+    </style>
+  </defs>
+  <path class="cls-1" d="M194.6,440.51c-78.23-44,60.27,0,60.27,0s8.56-382.95,0-392.32-258.63,91.86-166.76,0c101-101,0,278.56,0,278.56S272.83,484.48,194.6,440.51Z" transform="translate(-67.86 -31.09)"/>
+  <path class="cls-1" d="M187,256.61H343.78a10,10,0,0,1,10,10V399.43a10,10,0,0,1-10,10H187a0,0,0,0,1,0,0V256.61A0,0,0,0,1,187,256.61Z"/>
+  <path class="cls-1" id="float" d="M207,89.73h90a9,9,0,0,1,9,9V242.26a0,0,0,0,1,0,0H207a0,0,0,0,1,0,0V89.73A0,0,0,0,1,207,89.73Z"/>
+  <path class="cls-1" d="M74.57,102" transform="translate(-67.86 -31.09)"/>
+</svg>
+

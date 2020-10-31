@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/real-estate-project/static/css/main.00b60ef2.chunk.css",
+    "main.js": "/real-estate-project/static/js/main.fb058b7b.chunk.js",
+    "main.js.map": "/real-estate-project/static/js/main.fb058b7b.chunk.js.map",
+    "runtime-main.js": "/real-estate-project/static/js/runtime-main.d8072d03.js",
+    "runtime-main.js.map": "/real-estate-project/static/js/runtime-main.d8072d03.js.map",
+    "static/css/2.515daa14.chunk.css": "/real-estate-project/static/css/2.515daa14.chunk.css",
+    "static/js/2.f1d9111f.chunk.js": "/real-estate-project/static/js/2.f1d9111f.chunk.js",
+    "static/js/2.f1d9111f.chunk.js.map": "/real-estate-project/static/js/2.f1d9111f.chunk.js.map",
+    "index.html": "/real-estate-project/index.html",
+    "precache-manifest.924129c2157a5722225443689cee7f91.js": "/real-estate-project/precache-manifest.924129c2157a5722225443689cee7f91.js",
+    "service-worker.js": "/real-estate-project/service-worker.js",
+    "static/css/2.515daa14.chunk.css.map": "/real-estate-project/static/css/2.515daa14.chunk.css.map",
+    "static/css/main.00b60ef2.chunk.css.map": "/real-estate-project/static/css/main.00b60ef2.chunk.css.map",
+    "static/js/2.f1d9111f.chunk.js.LICENSE.txt": "/real-estate-project/static/js/2.f1d9111f.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/real-estate-project/static/media/logo.01486544.svg",
+    "static/media/urban_slums.jpg": "/real-estate-project/static/media/urban_slums.ed985fc5.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d8072d03.js",
+    "static/css/2.515daa14.chunk.css",
+    "static/js/2.f1d9111f.chunk.js",
+    "static/css/main.00b60ef2.chunk.css",
+    "static/js/main.fb058b7b.chunk.js"
+  ]
+}
