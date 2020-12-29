@@ -1,7 +1,7 @@
 import { MapAddress, MapAndProperty } from '../types/Rent.types';
 
 export const getAddress = <T>(
-  items: MapAndProperty[] | T,
+  items: MapAndProperty[] | T | any,
 ): MapAddress[] | undefined | any => {
   const new_items = [];
 
